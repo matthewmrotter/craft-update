@@ -1,0 +1,46 @@
+{% extends "seomatic/_layouts/seomatic-cp.twig" %}
+
+{% from 'seomatic/_includes/macros.twig' import registerJsModules %}
+
+{% block foot %}
+    {{ parent() }}
+    {% set jsModules = [
+        'vendors~seomatic-meta.js',
+        'seomatic-meta.js',
+        'vendors~javascript-editor~twig-editor.js',
+        'vendors~javascript-editor.js',
+        'javascript-editor.js',
+    ] %}
+    {{ registerJsModules(jsModules) }}
+{% endblock %}
+
+{% set navItems = {
+    'heading': { heading: "Settings"|t },
+} %}
+{% for scriptHandle,scriptData in scripts %}
+    {% set permission = "seomatic:tracking-scripts:#{scriptHandle}" %}
+    {% if currentUser.can(permission) %}
+        {% set navItems = navItems |merge({
+            (scriptHandle): {
+                title: "#{scriptData.name}"|t("seomatic"),
+                enabled: scriptData.include
+            },
+        }) %}
+    {% endif %}
+{% endfor %}
+
+{% set selectedItem = craft.app.request.getSegment(3)|default("googleAnalytics") %}
+
+{% block sidebar %}
+    <nav>
+        <ul>
+            {% for id, item in navItems %}
+                {% if item.heading is defined %}
+                    <li class="heading"><span>{{ item.heading }}</span></li>
+                {% else %}
+                    <li><a href="{{ url("seomatic/tracking/#{id}/#{currentSiteHandle}") }}"{% if id == selectedItem %} class="sel"{% endif %}><span class="status {% if item.enabled %}enabled{% endif %}"></span>{{ item.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+{% endblock %}

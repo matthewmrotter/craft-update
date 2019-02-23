@@ -1,0 +1,35 @@
+{% extends "freeform/_layouts/main" %}
+
+{% set selectedSubnavItem = 'settings' %}
+{% set fullPageForm = true %}
+
+{% set title = craft.freeform.name ~ " " ~ ("Settings"|t('freeform')) %}
+
+{% set navItems = craft.freeform.settingsNavigation %}
+
+{% set selectedItem = craft.app.request.getSegment(3)|default %}
+{% set docTitle = navItems[selectedItem].title~' - '~title %}
+
+{% block actionButton %}
+    <div class="buttons">
+        <div class="btngroup submit">
+            <input type="submit" class="btn submit" value="{{ 'Save'|t('freeform') }}">
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <nav>
+        <ul>
+            {% for id, item in navItems %}
+                {% if item.heading is defined %}
+                    <li class="heading"><span>{{ item.heading }}</span></li>
+                {% else %}
+                    <li>
+                        <a href="{{ url('freeform/settings/'~id) }}"{% if id == selectedItem %} class="sel"{% endif %}>{{ item.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+{% endblock %}

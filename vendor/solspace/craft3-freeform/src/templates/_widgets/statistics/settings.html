@@ -1,0 +1,30 @@
+{% import "_includes/forms" as forms %}
+
+<div>
+
+    {{ forms.checkboxSelectField({
+        label: "Forms"|t('freeform'),
+        instructions: "Choose which forms to use for statistics."|t('freeform'),
+        name: 'formIds',
+        options: formList,
+        values: settings.formIds,
+        showAllOption: true,
+    }) }}
+
+    {{ forms.checkboxSelectField({
+        label: "Statuses"|t('freeform'),
+        instructions: "Choose which submission statuses should be used for statistics."|t('freeform'),
+        name: "statusIds",
+        options: statusList,
+        values: settings.statusIds,
+        showAllOption: true,
+    }) }}
+
+    {{ forms.lightswitchField({
+        label: "Show Global Statistics"|t('freeform'),
+        instructions: "Enable this to show the total form, field and notification template count."|t('freeform'),
+        name: "showGlobalStatistics",
+        on: settings.showGlobalStatistics,
+    }) }}
+
+</div>

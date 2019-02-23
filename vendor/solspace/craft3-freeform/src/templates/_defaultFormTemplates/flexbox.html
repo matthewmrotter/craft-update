@@ -1,0 +1,71 @@
+{% css formCss %}
+
+{{ form.renderTag }}
+
+{% if form.pages|length > 1 %}
+    <ul class="freeform-pages">
+        {% for page in form.pages %}
+            <li>
+                {% if form.currentPage.index == page.index %}
+                    <a href="javascript:;">{{ page.label }}</a>
+                {% else %}
+                    {{ page.label }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if form.hasErrors %}
+    <div class="freeform-form-has-errors">
+        {{ "Error! Please review the form and try submitting again."|t('freeform') }}
+
+        {% if form.errors|length %}
+            <ul>
+                {% for error in form.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% for row in form %}
+<div class="freeform-row {{ form.customAttributes.rowClass }}">
+    {% for field in row %}
+    {% set columnClass = "freeform-column " ~ form.customAttributes.columnClass %}
+    {% if field.type == "submit" %}
+        {% set columnClass = columnClass ~ " freeform-column-content-align-" ~ field.position %}
+    {% endif %}
+    <div class="{{ columnClass }}"{{ field.rulesHtmlData }}>
+        {{ field.render({
+            class: field.type != "submit" ? "freeform-input" : "",
+            labelClass: "freeform-label" ~ (field.inputOnly ? " freeform-input-only-label" : "") ~ (field.required ? " freeform-required" : ""),
+            errorClass: "freeform-errors",
+            instructionsClass: "freeform-instructions",
+        }) }}
+
+        {# FOR FREEFORM PAYMENTS #}
+        {% if field.layoutRows is defined %}
+            {% for layoutRow in field.layoutRows %}
+                <div class="freeform-row {{ form.customAttributes.rowClass }}">
+                    {% for layoutField in layoutRow %}
+                        <div class="{{ columnClass }}">
+                            {{ layoutField.render({
+                                class: "freeform-input",
+                                labelClass: "freeform-label" ~ (layoutField.inputOnly ? " freeform-input-only-label" : "") ~ (layoutField.required ? " freeform-required" : ""),
+                                errorClass: "freeform-errors",
+                                instructionsClass: "freeform-instructions",
+                            }) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+
+{{ form.renderClosingTag }}
