@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1392px" height="39px" viewBox="0 0 1392 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>divide bar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.967730978">
+        <g id="home" transform="translate(0.000000, -1566.000000)" fill="#704C9F">
+            <g id="divide-bar" transform="translate(-34.000000, 1566.000000)">
+                <polygon id="Fill-1" points="1384.12707 1 1357 39 1375.87293 39 1403 1"></polygon>
+                <polygon id="Fill-2" points="1376.03996 1 1349 39 1352.96004 39 1380 1"></polygon>
+                <polygon id="Fill-3" points="0 0.5 0 38.5 1319.49399 39 1346 1"></polygon>
+                <polygon id="Fill-4" points="1416.98702 1 1390 39 1399.01298 39 1426 1.00196901 1426 1"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

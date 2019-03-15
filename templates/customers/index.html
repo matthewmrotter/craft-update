@@ -1,0 +1,88 @@
+{% extends "_layouts/main" %}
+
+{% block main %}
+
+  <div class="large-container mt-60 pt-50 mb-100 mb-md-70 pt-lg-30 mt-lg-60 mt-sm-30 ">
+    <div class="row text-center mb-70 mb-md-40">
+      <div class="col-md-10 offset-md-1">
+        <h2 class="purple mb-10">{{ entry.header }}</h2>
+        <p class="large">{{ entry.subheader }} </p>
+      </div>
+    </div>
+
+    <div class="row">
+      {% for icon in entry.iconRow.all %}
+      <div class="col-xl-3 col-sm-6 pl-25 pr-25 mb-xl-30 text-center">
+        {% for icon in icon.icon %}<img src="{{ icon.url }}" alt="{{ icon.title }}" class = "mb-10">{% endfor %}
+        <h4 class="purple mb-5" >{{ icon.header }}</h4>
+        <p>{{ icon.description }}</p>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+
+
+  <div class="light-grey-background pt-50 pb-50">
+
+
+  <div class="large-container pl-60 pr-60">
+    {% for row in entry.logoList  %}
+      <div class="row align-center justify-center">
+
+        {% for logo in row.logo %}
+        <div class="col-fifth col-fifth-icon col text-center mt-50 mb-50 mt-xl-30 mb-xl-30 mt-sm-30 mb-sm-30">
+          <img src="{{ logo.url }}" alt="{{ logo.title }}">
+        </div>
+        {% endfor %}
+
+
+
+      </div>
+        {% if not loop.last %}
+        <hr class = "mt-50 mb-50 grey">
+        {% endif %}
+
+      {% endfor %}
+
+
+
+
+
+  </div>
+
+
+
+  </div>
+
+
+{#
+  {% include "_partials/testimonial.html" %}
+#}
+
+
+<div class="pt-50 pb-50">
+  <div class="large-container">
+    <div class="row ">
+      {% for col in entry.featuredStories %}
+      <div class="col-lg-6 pt-30 pb-30 text-center {% if not loop.last %}border-right no-border-right{% endif %}">
+        <div class="half-container ml-auto mr-auto">
+        <div class="large-logo-holder mb-10">
+          {% for logo in col.logo %}  <a href="{{ col.linkUrl }}"><img src="{{ logo.url }}" alt="{{ logo.title }}"></a>{% endfor %}
+        </div>
+        <h3 class = "mb-20">{{ col.header }}</h3>
+        <p class = "mb-50">{{ col.snippet }}</p>
+      <a href="{{ col.linkUrl }}" class="purple-link purple">Read More</a>
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

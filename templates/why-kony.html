@@ -1,0 +1,114 @@
+{% extends "_layouts/products" %}
+{% block main %}
+{% cache %}
+
+{% for block in entry.whyKony.all %}
+
+{% if block.type == "banner" %}
+
+  <div class="banner-slant-jumbotron small-img" style="background-image: url({{ block.backgroundImage.one.url }})">
+  <img src="/assets/icons/why-kony-bg.svg" alt="" role = "presentation" class="why-kony-pattern">
+    <div class="content-holder">
+      <div class="half-container-left half-container mr-auto relative ml-30">
+        <h1 class=" white">Why Kony DBX?</h1>
+      </div>
+    </div>
+  </div>
+
+  {% elseif block.type == "howWeWork" %}
+
+  <div class="purple-gradient-background bottom-bar-background notch-background pt-120 pb-120 pt-sm-80 pb-sm-70 bottom-left-background text-center relative">
+    <img src="/assets/icons/triangle-notch.svg" alt="triangle-notch" class="triangle-notch">
+    <div class="container">
+    <div class="row mb-50">
+      <div class="col-md-8 offset-md-2">
+        <h2 class="white mb-10">{{ block.header }}</h2>
+        <p class="white">{{ block.description }}</p>
+      </div>
+    </div>
+    <div class="row">
+      {% for icon in block.icons.all %}
+      <div class="col-md-4 {% if not loop.last %}white-border{% endif %} no-border-md pr-40 pl-40 pr-lg-30 pl-lg-30 mb-md-40 up">
+        <img src="{{ icon.icon.one.url }}" alt="{{ icon.icon.one.title }}" class = "mb-10 waypoint-transition slide-">
+        <p class="white large waypoint-transition slide-">{{ icon.description}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+
+
+  {% elseif block.type == "about" %}
+
+  <div class="large-container mt-90 mb-90 mt-xl-40 mb-xl-60 mb-md-0">
+    <div class="row">
+      {% for col in block.column.all %}
+        <div class="col-xl-4 pr-50 pl-50 pb-xl-50 pr-xl-40 pl-xl-40 mb-xl-40 {% if not loop.last %}arrow-right-border{% endif %} relative pt-30 pb-30 pr-sm-15 pl-sm-15 waypoint-transition slide-up">
+          <h3 class="purple mb-10">{{ col.header }}</h3>
+          <p>{{ col.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+
+  {% elseif block.type == "featuredPartners" %}
+
+
+  <div class="large-container  relative mt-100 mt-lg-70 mt-md-50 text-center">
+    <h2 class="purple  purple  mb-10">Kony DBX Partners</h2>
+    <p class="large mb-40">Don’t outspend your competition, out-partner them</p>
+  </div>
+  <div class="large-container client-logo-slider relative mb-100 mb-md-70 pr-50 pl-50 pr-xl-90 pl-xl-90 pr-lg-50 pl-lg-50  pr-md-25 pl-md-25 mb-sm-0" >
+    <div class="slider-2 mb-sm-30">
+      {% for partner in block.partner.all %}
+         <div class="text-center pl-50 pr-50 pr-lg-30 pl-lg-30 mb-sm-30 pr-sm-25 pl-sm-25 logos" >
+           <img src="{{ partner.url }}" alt="{{ partner.title }}" class = "img-responsive">
+         </div>
+        {% endfor %}
+
+    </div>
+    <div class="next client-next"><img src="/assets/icons/carousel-arrow-r.svg" alt="arrow l"></div>
+    <div class="prev client-prev"><img src="/assets/icons/carousel-arrow-l.svg" alt="arrow r"></div>
+  </div>
+
+
+
+
+
+{% elseif block.type == "testimonials" %}
+
+<div class="light-grey-background pt-100 pb-120 pt-lg-60 pb-lg-60 hidden-overflow">
+  <h2 class="purple mb-50 mb-md-30 text-center">Testimonials</h2>
+<div class="container relative">
+<div class="slick-testimonials">
+  {% for test in block.testimonial.all %}
+  <div class="testimonial white-background text-center pt-40 pb-60 pl-30 pr-30">
+    <div class="testimonial-headshot">
+      <img src="{{ test.thumbnail.one.url }}" alt="{{ test.thumbnail.one.title }}" class = "mb-15 ">
+    </div>
+    <p class="smol mb-30">{{ test.testimonial|striptags  }}</p>
+    <span class="link purple">{{ test.title }}</span>
+    <h6 class="grey text-uppercase">{{ test.testimonialPosition }}</h6>
+  </div>
+  {% endfor %}
+
+
+</div>
+<div class="next slick-arrow test-next" style=""><img src="/assets/icons/carousel-arrow-r.svg" alt="arrow l"></div>
+<div class="prev slick-arrow test-prev" style=""><img src="/assets/icons/carousel-arrow-l.svg" alt="arrow l"></div>
+</div>
+
+</div>
+
+
+{% endif %}
+
+{% endfor %}
+
+
+
+{% endcache %}
+{% endblock %}

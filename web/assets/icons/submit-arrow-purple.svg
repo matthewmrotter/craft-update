@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="20px" viewBox="0 0 11 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Footer" transform="translate(-1272.000000, -233.000000)" fill="#704C9F">
+            <g id="Input" transform="translate(997.000000, 221.000000)">
+                <path d="M284.671817,31.7770435 L275.223625,22.5270435 C274.925458,22.2351685 274.925458,21.7651685 275.223625,21.4732935 L284.671817,12.2232935 C284.973217,11.9276685 285.464771,11.9257935 285.769406,12.2164185 C286.07404,12.5076685 286.077274,12.9820435 285.77652,13.2770435 L276.867098,22.0001685 L285.77652,30.7232935 C286.077274,31.0182935 286.07404,31.4926685 285.769406,31.7839185 C285.618059,31.9282935 285.421437,32.0001685 285.224168,32.0001685 C285.023666,32.0001685 284.82381,31.9257935 284.671817,31.7770435 Z" id="Icon" transform="translate(280.500000, 22.000084) scale(-1, 1) translate(-280.500000, -22.000084) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

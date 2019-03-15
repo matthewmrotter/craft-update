@@ -1,0 +1,229 @@
+@import "colors"
+
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-Bold.woff') format("woff")
+  font-weight: 700
+  font-style: normal
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-BoldItalic.woff') format("woff")
+  font-weight: 700
+  font-style: italic
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-Hairline.woff') format("woff")
+  font-weight: 100
+  font-style: normal
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-HairlineItalic.woff') format("woff")
+  font-weight: 100
+  font-style: italic
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-Light.woff') format("woff")
+  font-weight: 300
+  font-style: normal
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-LightItalic.woff') format("woff")
+  font-weight: 300
+  font-style: italic
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-Medium.woff') format("woff")
+  font-weight: 500
+  font-style: normal
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-MediumItalic.woff') format("woff")
+  font-weight: 500
+  font-style: italic
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-Regular.woff') format("woff")
+  font-weight: 400
+  font-style: normal
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-RegularItalic.woff') format("woff")
+  font-weight: 400
+  font-style: italic
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-Semibold.woff') format("woff")
+  font-weight: 600
+  font-style: normal
+@font-face
+  font-family: 'karbon'
+  src: url('/assets/fonts/Karbon-SemiboldItalic.woff') format("woff")
+  font-weight: 600
+  font-style: italic
+body, .p
+  -webkit-font-smoothing: antialiased
+  font-smooth: antialiased
+  font-family: karbon
+  font-weight: 400
+  font-size: 22px
+  color: #323E48
+  letter-spacing: 0
+  line-height: 28px
+
+a
+  color: $purple
+h1, .h1
+  font-weight: 300
+  font-size: 60px
+
+  letter-spacing: 0
+  line-height: 55px
+h2, .h2
+  font-size: 50px
+  font-weight: 400
+
+  letter-spacing: 0
+  line-height: 55px
+h3, .h3
+  font-size: 35px
+  letter-spacing: 0
+  line-height: 36px
+  font-weight: 400
+.tall
+  font-size: 37px
+  letter-spacing: 1px
+  line-height: 40px
+  font-weight: 400
+h4, .h4
+  font-weight: 500
+  font-size: 25px
+  color: #533279
+  letter-spacing: 0
+  line-height: 25px
+h5, .h5
+  font-weight: 500
+  font-size: 18px
+
+  letter-spacing: 1.2px
+  line-height: 25px
+h6, .h6
+  font-weight: 500
+  font-size: 13px
+  color: #36246A
+  letter-spacing: 0.87px
+  line-height: 18px
+.large, .large p
+  font-weight: 400
+  font-size: 32px
+  color: #415464
+  letter-spacing: 0
+  line-height: 41px
+p.smol, li.smol
+  opacity: 0.8
+  font-weight: 400
+  font-size: 17px
+  color: #323E48
+  letter-spacing: 0
+  line-height: 21px
+li.smol
+  color: white
+  opacity: 1
+h2.smol
+  font-size: 35px
+  color: #533279
+  letter-spacing: 0
+  line-height: 55px
+h1, h2, h3, h4, h5, h6, p
+  margin-top: 0
+  margin-bottom: 0
+
+.load-more-btn
+  font-weight: 600
+  font-size: 25px
+  color: $purple
+  letter-spacing: 1px
+  line-height: 16px
+  text-transform: uppercase
+.number
+  font-weight: 500
+  font-size: 70px
+  color: #AD95C7
+  letter-spacing: 0
+  line-height: 70px
+
+.white
+  color: white
+.purple
+  color: $purple
+.grey
+  color: #758592
+.lavendar
+  color: #AD95C7
+
+
+
+cite, .cite
+  font-weight: 400
+  font-size: 33px
+  color: #415464
+  letter-spacing: 0
+  line-height: 19px
+  font-style: normal
+.position
+  font-weight: 400
+  font-size: 20px
+  color: #657481
+  letter-spacing: 0
+  line-height: 25px
+  display: block
+
+.purple-link-text
+  font-weight: 600
+  font-size: 17px
+  color: #36246A
+  letter-spacing: 0.68px
+  line-height: 16px
+
+@media (max-width: 991px)
+  h2.smol
+    line-height: 40px
+
+@media (max-width: 576px)
+  body, .p
+    font-size: 17px
+    line-height: 21px
+  h1, .h1
+    font-size: 40px
+    line-height: 45px
+  h2, .h2
+    font-size: 32px
+    line-height: 36px
+  h3, .h3, .tall
+    font-size: 28px
+    line-height: 34px
+  h4, .h4
+    font-size: 20px
+    line-height: 23px
+  h5, .h5
+    font-size: 14px
+
+  h6, .h6
+    font-size: 11px
+    line-height: 15px
+
+  .large, .large p
+    line-height: 31px
+    font-size: 24px
+  .smol, .smol p
+    font-size: 13px
+    letter-spacing: 0
+    line-height: 21px
+  .cite, cite
+    font-size: 24px
+    line-height: 28px
+  .light-purple-link, .purple-link, .white-link
+    font-size: 22px
+
+  .testimonial-slider .large
+    font-size: 22px
+    line-height: 28px

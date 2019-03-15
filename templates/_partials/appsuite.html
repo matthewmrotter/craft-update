@@ -1,0 +1,21 @@
+  <div class="large-container">
+    <div class="row mb-60 mb-sm-40">
+      <div class="col text-center">
+        <h2 class="purple">
+          {{ block.header }}
+        </h2>
+      </div>
+    </div>
+    <div class="row justify-center">
+      {% for app in block.applications.all %}
+        <div class="col-6 col-sm solutions-col mb-40 pr-40 pl-40 pr-xl-20 pl-xl-20 text-center waypoint-transition slide-up">
+          <a href="{{ app.url }}" >
+            <div class="icon-holder">
+              <img src="{{ app.navigationIcon.one.url }}" alt="{{ app.navigationIcon.one.title }}" class = " banking-solutions-icons mb-15">
+            </div>
+            <h4 class = "purple">{{ app.title }}</h4>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>

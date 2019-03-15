@@ -1,0 +1,78 @@
+{% if post.section == "Trends and Insights" %}
+
+  {% if post.type == "outboundLink" %}
+    {% set myUrl = post.linkUrl %}
+  {% else %}
+    {% set myUrl = post.url %}
+  {% endif%}
+
+  <div class="col-md-4 mb-30 blog-item {% if not craft.app.request.isAjax  %}slide-up waypoint-transition {% endif %}" >
+    <a href="{{ myUrl}}" {% if myUrl != post.url %} target = "_blank" {% endif %}>
+    {% if post.thumbnail | length %}  <div class="img-blog-holder mb-20"><img src="{{ post.thumbnail.one.url('thumbnail')   }}" alt="{{ post.thumbnail.one.title  }}" class = ""></div>{% endif %}
+    </a>
+    <div class="pl-30 pr-30 pb-40">
+      <h6 class = "text-uppercase mb-15 purple">{{ post.insightCategory.one }} &nbsp;&nbsp;|&nbsp;&nbsp; {{ post.postDate|date("M") }} {{ post.postDate|date("dS") }} {{ post.postDate|date("Y") }} </h6>
+      <h4 class = "mb-15 ">
+        <a href="{{ myUrl }}" class="purple" {% if myUrl != post.url %} target = "_blank" {% endif %}>{{ post.title }}</a>
+      </h4>
+
+      <p class="smol mb-30">{% if post.snippet | length > 100 %}{{ post.snippet | slice(0, 100) | striptags }}...{% else %}{{ post.snippet | striptags }}{% endif %}</p>
+      <div class="social-sharing">
+        <div class=" text-center flex">
+          <a href="#" onclick="window.open('https://twitter.com/home?status={{   post.title|url_encode }}{{   post.getUrl() }}','share','resizable,height=360,width=470'); return false;" target="_blank">
+            <img src="/assets/icons/twitter-small.svg" alt="Puprle Twitter">
+          </a>
+          <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{   post.getUrl() }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+            <img src="/assets/icons/facebook-small.svg" alt="Facebook">
+          </a>
+          <a href="#" onclick="window.open('https://plus.google.com/share?url={{ post.getUrl() }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+            <img src="/assets/icons/google-plus-small.svg" alt="Google Plus">
+          </a>
+          <a href="#" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url={{   post.getUrl() }}&title={{   post.title }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+            <img src="/assets/icons/linked-small.svg" alt="Linked In">
+          </a>
+
+        </div>
+      </div>
+      <a href="{{ myUrl }}" class="purple read-link text-uppercase" {% if myUrl != post.url %} target = "_blank" {% endif %}>Read More</a>
+    </div>
+  </div>
+
+{% else %}
+
+
+<div class="col-md-4 mb-30 blog-item  {% if not craft.app.request.isAjax  %}slide-up waypoint-transition {% endif %}">
+  <a href="{{ post.url}}" >{% if post.thumbnail | length %}<div class="img-blog-holder mb-20"><img src="{{ post.thumbnail.one.url('thumbnail')  }}" alt="{{ post.thumbnail.one.title  }}" ></div>{% endif %}</a>
+  <div class="pl-30 pr-30 pb-40">
+    <h6 class = "text-uppercase mb-15">{{ post.newsAndEventsCategory.one }} &nbsp;&nbsp;|&nbsp;&nbsp; {{ post.postDate|date("M") }} {{ post.postDate|date("dS") }} {{ post.postDate|date("Y") }}</h6>
+    <h4 class = "mb-15"><a href="{{ post.url }}" class="purple" >{{ post.title }}</a></h4>
+    {% if post.type == "events" %}
+      <p>{{ post.eventLocation}}</p>
+      <p class="mb-30">{{ post.eventStart | date("M d, Y") }}</p>
+    {% else %}
+      <p class="smol mb-30">{% if post.snippet | length > 100 %}{{ post.snippet | slice(0, 100) | striptags }}...{% else %}{{ post.snippet | striptags }}{% endif %}</p>
+    {% endif %}
+    <div class="social-sharing">
+      <div class=" text-center flex">
+        <a href="#" onclick="window.open('https://twitter.com/home?status={{   post.title|url_encode }}{{   post.getUrl() }}','share','resizable,height=360,width=470'); return false;" target="_blank">
+          <img src="/assets/icons/twitter-small.svg" alt="Puprle Twitter">
+        </a>
+        <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{   post.getUrl() }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+          <img src="/assets/icons/facebook-small.svg" alt="Facebook">
+        </a>
+        <a href="#" onclick="window.open('https://plus.google.com/share?url={{ post.getUrl() }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+          <img src="/assets/icons/google-plus-small.svg" alt="Google Plus">
+        </a>
+        <a href="#" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url={{   post.getUrl() }}&title={{   post.title }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+          <img src="/assets/icons/linked-small.svg" alt="Linked In">
+        </a>
+
+      </div>
+    </div>
+    <a href="{{ post.url }}" class="purple read-link text-uppercase" >Read More</a>
+  </div>
+</div>
+
+
+
+{% endif %}

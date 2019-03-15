@@ -1,0 +1,15 @@
+{% set cat = craft.app.request.getParam("cat") %}
+{% if cat == "All" %}
+  {% set  posts = craft.entries.section("trendsAndInsights").orderBy('postdate desc').limit(12) %}
+{% else %}
+  {% set posts = craft.entries.section("trendsAndInsights").relatedTo(craft.categories.id(cat)) %}
+{% endif %}
+
+{% for post in posts.all %}
+  {% include "_partials/blog-post" %}
+{% endfor %}
+{% if cat == "All" %}
+<div class="load-more-btn text-center mb-100 mt-60 col-12">
+  Load more <img src="/assets/icons/down-arrow.svg" alt="down arrow">
+</div>
+{% endif %}

@@ -1,0 +1,42 @@
+{% extends "_layouts/products" %}
+{% block main %}
+<div class="container pt-50 pb-50">
+{% set query = craft.app.request.getParam('q') %}
+{% set entries = craft.entries.search(query).orderBy('score') %}
+
+{% if entries|length %}
+  <h1>Search Results for "{{ query }}":</h1>
+  <div class="search-results large services-list">
+    <ul class = "list-unstyled">
+        {% for entry in entries.all %}
+            <li class = "mb-20"><h4>
+              {% if entry.type == "outboundLink" %}{% set myUrl = entry.linkUrl %}{% else %}{% set myUrl = entry.url %}{% endif%}
+
+              <a href="{{ myUrl }}" class = "rust-text">{{ entry.title }}</a>
+
+            </h4>
+            <p class="smol">{{ entry.section }}</p></li>
+        {% endfor %}
+    </ul>
+    </div>
+{% else %}
+<div class="text-center">
+    <p class = "large"><br><br><br>Your search for <b>“{{ query }}”</b> didn’t return any results. <br><br><br>
+
+
+      <div class="row">
+          <div class="col-lg-12 text-center">
+            <a href="/" class="purple-btn inline-block mb-25">Home</a>
+          </div>
+        </div>
+
+      <br><br><br></p>
+
+
+    </div>
+{% endif %}
+</div>
+
+
+
+  {% endblock %}

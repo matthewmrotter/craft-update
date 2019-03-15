@@ -1,0 +1,18 @@
+{% extends "_layouts/main" %}
+{% block main %}
+{% cache %}
+
+{% for block in entry.pageTemplate.all %}
+  {% if block.type == "contained" %}
+  <div class="container {% if block.padding %} pt-50 pb-50 pt-sm-30 pb-sm-30 {% endif %}">
+    {{ block.body | raw  }}
+    </div>
+  {% else %}
+  <div class=" {% if block.padding %} pt-50 pb-50 pt-sm-30 pb-sm-30 {% endif %}">
+
+    {{ block.body | raw  }}
+  </div>
+  {% endif %}
+{% endfor %}
+{% endcache %}
+{% endblock %}

@@ -1,0 +1,127 @@
+
+    {% for block in entry.productsBlocks.all() %}
+
+      {% if block.type == "banner" %}
+
+      <div class="maroon-gradient banner relative hidden-overflow pb-xl-50" style = "background-image: linear-gradient(-204deg,{{ block.colorStart }} 0,{{ block.colorStop }} 100%);">
+        <div class="transparent-cross"></div>
+        <div class="small-container ">
+          <div class="row align-center reverse-wrap">
+            <div class="col-xl-6 pr-0 col-lg-10 offset-lg-1 offset-xl-0 center-xl pr-xl-15">
+              <h1 class = "mb-25"><img src="{{ block.logo.one.url }}" alt="{{ block.logo.one.title }}" class = "img-responsive"></h1>
+              <p class="white mb-20">{{ block.header | nl2br  | striptags("<em><i><b><strong><br>") | raw   }}</p>
+              <p class="white mb-40">{{ block.description | nl2br  | striptags("<em><i><b><strong><br>") | raw  }}</p>
+
+
+              {% if entry.children|length  %}
+                {% for child in entry.children.all %}
+                  <a href="{{ child.url }}" class="purple-btn inline-block mb-xs-15" >Quickview</a>
+                {% endfor %}
+                  <a href="http://forms.kony.com/digital-banking-en-contact.html" class="purple-btn inline-block ml-20 ml-xs-0" target = "_blank">Talk to an Advisor</a>
+              {% else %}
+                    <a href="http://forms.kony.com/digital-banking-en-contact.html" class="purple-btn inline-block" target = "_blank">Talk to an Advisor</a>
+              {% endif %}
+
+            {% for button in block.videoButton %}
+            <a href="{{ button.videoUrl }}" class="purple-btn inline-block video-btn  ml-10 mt-md-10  " style = "width: 233px;" data-link = "{{ button.videoUrl }}">{{ button.buttonText }}</a>
+            {% endfor %}
+
+            </div>
+            <div class="col-xl-6 center-xl">
+              <div class="screen-container mt-60 mb-40 mt-lg-40 {{block.layoutType | kebab }}">
+                <img src="{{ block.screenshot.one.url }}" alt="{{ block.screenshot.one.title }}" class = "responsive-img-md">
+                {% for vid in block.videos.all %}
+                <div class="video-{{ loop.index }}-holder hidden-lg">
+                  <video src="{{ vid.url}}" autoplay loop muted  {% if vid.poster | length %} poster = "{{ vid.poster.one.url}}" {% endif %}></video>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {% elseif block.type == "iconRow" %}
+
+      <div class="small-container mt-90 mb-90 mt-md-60 mb-md-60">
+        <div class="row mb-70 mb-md-40 mb-sm-20">
+          <div class="col-sm-10 offset-sm-1 text-center">
+            <p class="large">{{ block.description }}</p>
+          </div>
+        </div>
+        <div class="row text-center mb-20 justify-center">
+          {% for icon in block.icons.all %}
+          <div class="col-lg-4 col-md-6 col-12 pl-30 pr-30 pt-sm-25 pl-sm-20 pr-sm-20 mb-50 mb-md-20 waypoint-transition slide-up">
+            <img src="{{ icon.icon.one.url }}" alt="{{ icon.icon.one.title }}" class = "mb-10 circle-icon">
+            <p>{{ icon.description | striptags("<em><i><b>") | raw  }}</p>
+          </div>
+          {% endfor %}
+
+        </div>
+
+
+
+
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <a href="{{ block.demoDownload }}" class="purple-btn inline-block mb-25">Request a Demo</a>
+          </div>
+          <div class="col-lg-12 text-center"><a href="{{ block.dataSheetDownload}}" class="purple inline-block"><img src="/assets/icons/download-icon.svg" alt="Download" class = "mr-15">Download Solution Overview</a></div>
+        </div>
+      </div>
+
+
+      {% elseif block.type == "benefits" %}
+
+
+        {% include "_partials/benefits"%}
+
+
+      {% elseif block.type == "experiencePlatform" %}
+
+      <div class="light-grey-background pt-100 pb-100 pt-lg-60 pb-lg-40">
+        <div class="large-container  ">
+          <div class="row mb-60 mb-sm-40">
+            <div class="col text-center">
+              <h2 class="purple">
+                {{ block.header }}
+              </h2>
+            </div>
+          </div>
+          <div class="row ">
+            {% for icon in block.icon.all %}
+            <div class="col-lg-3  col-sm-6  mb-70 pr-40 pl-40 mb-xl-40 pr-xl-20 pl-xl-20 pr-sm-15 pl-sm-15 text-center ">
+              <img src="{{ icon.icon.one.url }}" alt="{{ icon.icon.one.title }}" class = " mt-5 bright-icon waypoint-transition slide-right large-icon">
+              <p class = "">{{ icon.description }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+
+
+
+      {% elseif block.type == "digitalBankingMarketplace" %}
+
+
+    {% include "/_partials/digital-banking-marketplace" %}
+
+      {% elseif block.type == "testimonials" %}
+
+        {% include "_partials/testimonial.html" %}
+
+
+
+      {% elseif block.type == "featuredPost" %}
+
+
+      {% set post = block.post.one %}
+
+    {% include "_partials/related-article-white"%}
+
+      {% endif %}
+
+    {% endfor %}

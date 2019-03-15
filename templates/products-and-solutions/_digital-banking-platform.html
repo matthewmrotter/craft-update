@@ -1,0 +1,83 @@
+
+  {% for block in entry.digitalBankingBlocks.all() %}
+
+
+
+    {% if block.type == "banner" %}
+
+
+    <div class="maroon-gradient digital-banking-platform-banner banner relative hidden-overflow product-banner pb-30 pt-xl-80 pb-xl-80 pt-sm-50 pb-sm-50" style = "background-image: linear-gradient(-204deg,{{ block.colorStart }} 0,{{ block.colorStop }} 100%);">
+      <div class="transparent-cross"></div>
+      <img src="{{ block.screenshot.one.url }}" alt="{{ block.screenshot.one.title }}" class = "dbx-background">
+      <div class="small-container ">
+        <div class="row align-center center-xl">
+          <div class="col-xl-6 col-lg-8 offset-lg-2 offset-xl-0 pr-0 pr-xl-15 ">
+
+            <h1 class = "white mb-20">{{ block.headerText | nl2br  | striptags("<em><i><b><strong><br>") | raw   }}</h1>
+            <p class="white mb-20">{{ block.secondaryText| nl2br  | striptags("<em><i><b><strong><br>") | raw   }}</p>
+            <p class="white mb-40">{{ block.description | nl2br  | striptags("<em><i><b><strong><br>") | raw   }}</p>
+            <a href="http://forms.kony.com/digital-banking-en-contact.html" class="btn  inline-block" target = "_blank">Talk to an Advisor</a>
+          </div>
+          <div class="col-xl-6 hidden-xl">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {% elseif block.type == "iconRow" %}
+
+<div class="small-container mt-90 mb-90 mt-md-60 mb-md-60">
+
+    {% include "_partials/icon-row" %}
+
+
+    <div class="row ">
+      <div class="col-lg-12 text-center">
+        <a href="{{ block.demoDownload }}" class="purple-btn inline-block mb-25">Request a Demo</a>
+      </div>
+      <div class="col-lg-12 text-center"><a href="{{ block.dataSheetDownload}}" class="purple inline-block"><img src="/assets/icons/download-icon.svg" alt="Download" class = "mr-15">Download Solution Overview</a></div>
+    </div>
+
+
+    </div>
+
+    {% elseif block.type == "benefits" %}
+
+      {% include "_partials/benefits"%}
+
+
+    {% elseif block.type == "appSuite" %}
+
+
+
+
+
+    <div class="light-grey-background pt-100 pb-60 pt-md-50 pb-md-40">
+          {% include "_partials/appsuite" %}
+    </div>
+
+
+    {% elseif block.type == "testimonials" %}
+
+      {% include "_partials/testimonial.html" %}
+
+
+    {% elseif block.type == "digitalBankingMarketplace" %}
+
+      {% include "/_partials/digital-banking-marketplace" %}
+
+
+    {% elseif block.type == "featuredPost" %}
+
+
+    {% set post = block.post.one %}
+
+
+    {% include "_partials/related-article-white"%}
+
+
+    {% endif %}
+
+
+
+  {% endfor %}

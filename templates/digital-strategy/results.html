@@ -1,0 +1,35 @@
+{% extends "_layouts/main" %}
+
+{% block main %}
+
+<div class="strategy-bg img-background pt-100 pb-100" style = "background-image:url(/assets/images/strategy-bg.jpg)">
+
+
+  <div class="container">
+
+<h1 class="white text-center h3 mb-30">Where are you on the Kony Digital Banking Maturity Curve?</h1>
+
+
+{% set submission = craft.freeform.submissions({
+    form: 'konyDigitalBankingMaturity',
+    id: craft.app.request.getParam("sub"),
+}).one() %}
+
+
+  {{ submission.total.value() }}
+
+  {% if submission.total.value() < 10  %}
+      <img src="/assets/results/low.png" alt="">
+  {% elseif submission.total.value() < 20%}
+      <img src="/assets/results/md-low.png" alt="">
+  {% elseif submission.total.value() < 30%}
+        <img src="/assets/results/md-high.png" alt="">
+  {% else %}
+  <img src="/assets/results/high.png" alt="">
+  {% endif %}
+
+  </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% if entry.featuredProduct | length and entry.featuredProduct.one.id != 34 %}
+  {% set prod = entry.featuredProduct.one %}
+
+  {% set block = prod.productsBlocks.one %}
+{% else %}
+  {% set prod = craft.entries.id(34).one %}
+  {% set block = prod.digitalBankingBlocks.one %}
+{% endif %}
+
+
+
+
+
+
+<div class="dark-purple-background sample-product-banner relative pt-50 pb-50" style = "background-image: linear-gradient(-204deg,{{ block.colorStart }} 0,{{ block.colorStop }} 100%);">
+  <div class="transparent-cross"></div>
+  <div class="small-container relative">
+  <div class="row flex align-center">
+    <div class="col-lg-5 right-overflow">
+      <a href="{{ prod.url}}">
+        <img src="{{ prod.productImageThumbnail.one.url }}" alt="{{ prod.productImageThumbnail.one.url }}" class=" mr-50 mr-lg-0  img-responsive-lg"  >
+      </a>
+    </div>
+    <div class="col-lg-7 mt-50 centered-lg">
+      {% if prod.id != 34 %}
+      <a href="{{ prod.url}}">
+      <img src="{{ block.logo.one.url }}" alt="{{ block.logo.one.title }}" class="mb-20 ">
+      </a>
+      {% else %}
+      <h2 class="white mb-30"><a href="{{ prod.url}}" class="white">Kony Digital Banking Platform</a></h2>
+      {% endif %}
+
+      <p class="white mb-30">{{ prod.snippet | striptags }}</p>
+      <a href="{{ prod.url }}" class="white-link">Learn More</a>
+    </div>
+  </div>
+  </div>
+</div>

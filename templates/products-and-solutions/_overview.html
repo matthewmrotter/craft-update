@@ -1,0 +1,54 @@
+<div class="maroon-gradient  relative hidden-overflow pt-60 pb-60 pt-sm-30 pb-sm-30" style = "background-image: linear-gradient(-204deg,{{ entry.colorStart }} 0,{{ entry.colorStop }} 100%);">
+  <div class="transparent-cross"></div>
+<div class="small-container">
+
+<div class="row">
+
+  <div class="col-lg-6 mt-80 pl-xl-50 mt-lg-30 mt-sm-20">
+
+    <img src="{{ entry.logo.one.url }}" alt="{{ entry.logo.one.title }}" class = "mb-20">
+    <h1 class="white p mb-30 pr-30 pr-lg-0">{{ entry.header }}</h1>
+
+    <ol class ="pl-0 ml-0 list-unstyled">
+      <li class = "mb-50 ">
+        <h4 class="white mb-30">From  a  mobile  device,  install  and  launch  our  free  viewer  from  your  app  store. </h4>
+        <div class="flex wrap-md">
+          {% set block = entry.downloadLinks.one %}
+          <a href="{{ block.appStore }}" class = "mr-15" target = "_blank">
+            <img src="/assets/icons/appstore.svg" alt="Appstore Icon">
+          </a>
+          <a href="{{ block.googlePlay }}" class = "mr-15" target = "_blank">
+            <img src="/assets/icons/google.svg" alt="Google Play Store">
+          </a>
+          <a href="{{ block.microsoft }}" class = "mr-15" target = "_blank">
+            <img src="/assets/icons/microsoft.svg" alt="Microsoft">
+          </a>
+        </div>
+      </li>
+      <li>
+      <h4 class ="white mb-15">Enter the App Preview ID:</h4>
+      <h2 class="h1 white">{{ entry.appPreview }}</h2>
+      </li>
+    </ol>
+
+
+
+  </div>
+
+
+  <div class="col-lg-6 text-center hidden-md">
+    <div class="app-preview-container inline-block">
+      <img src="{{ entry.screenshot.one.url }}" alt="{{ entry.screenshot.one.title }}" class ="img-responsive-md">
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+</div>

@@ -1,0 +1,51 @@
+    {% if post.section == "Trends and Insights" %}
+<div class="dark-purple-background pt-70 pb-100 pt-md-50 pb-md-70 bottom-left-background">
+  <div class="small-container">
+
+  {% if post.type == "outboundLink" %}
+    {% set myUrl = post.linkUrl %}
+  {% else %}
+    {% set myUrl = post.url %}
+  {% endif %}
+
+    <div class="row align-center justify-center">
+      <div class="col-lg-6 pr-0 pr-sm-15 pl-lg-25 pr-lg-25 mb-lg-30">
+        <a href="{{ myUrl}}" {% if myUrl != post.url %} target = "_blank" {% endif %} >
+          <div class="img-blog-holder slide-right waypoint-transition">
+            <img src="{{ post.thumbnail.one.url }}" alt="{{ post.thumbnail.one.title }}" class = "img-responsive-lg mr-lg-auto ml-lg-auto ">
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-6 pl-50 pl-lg-25 pr-lg-25">
+        <h3 class="white mb-5"><a href="{{ myUrl}}" {% if myUrl != post.url %} target = "_blank" {% endif %} class = "white">{{ post.title }}</a></h3>
+        <h6 class = "text-uppercase mb-15 lavendar">{{ post.insightCategory.one }} &nbsp;&nbsp;|&nbsp;&nbsp; {{ post.postDate|date("M") }} {{ post.postDate|date("dS") }} {{ post.postDate|date("Y") }}</h6>
+        <p class="white mb-20">{{ post.snippet |striptags }}</p>
+        <a href="{{ myUrl}}" class = "light-purple-link" {% if myUrl != post.url %} target = "_blank" {% endif %}>Read More</a>
+      </div>
+    </div>
+
+{% else %}
+<div class="row align-center justify-center">
+<div class="col-lg-6 pr-0 pr-sm-15 pl-lg-25 pr-lg-25 mb-lg-30">
+  <a href="{{ post.url}}" >
+      <div class="img-blog-holder slide-right waypoint-transition">
+    <img src="{{ post.thumbnail.one.url }}" alt="{{ post.thumbnail.one.title }}" class = "img-responsive-lg mr-lg-auto ml-lg-auto ">
+      </div>
+  </a>
+</div>
+<div class="col-lg-6 pl-50 pl-lg-25 pr-lg-25">
+  <h3 class="white mb-5"><a href="{{ post.url}}" class = "white">{{ post.title }}</a></h3>
+  <h6 class = "text-uppercase mb-15 lavendar">{{ post.newsAndEventsCategory.one }} &nbsp;&nbsp;|&nbsp;&nbsp; {{ post.postDate|date("M") }} {{ post.postDate|date("dS") }} {{ post.postDate|date("Y") }}</h6>
+  {% if post.type == "events" %}
+    <p>{{ post.eventLocation}}</p>
+    <p class="mb-30">{{ post.eventStart | date("M d, Y") }}</p>
+  {% else %}
+    <p class="smol mb-30">{{ post.snippet | striptags }}</p>
+  {% endif %}
+  <a href="{{ post.url}}">Read More</a>
+</div>
+</div>
+{% endif %}
+
+</div>
+</div>

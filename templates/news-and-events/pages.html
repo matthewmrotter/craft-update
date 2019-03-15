@@ -1,0 +1,11 @@
+{% paginate craft.entries.section('newsAndEvents').limit(12) as pageInfo, posts %}
+
+{% for post in posts %}
+  {% include "_partials/blog-post" %}
+{% endfor %}
+
+{% if pageInfo.nextUrl %}
+<div class="load-more-btn text-center mb-100 mt-60 col-12" data-page = "/news-and-events/p">
+  Load more <img src="/assets/icons/down-arrow.svg" alt="down arrow">
+</div>
+{% endif %}

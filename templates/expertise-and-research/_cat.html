@@ -1,0 +1,93 @@
+{% extends "_layouts/blog" %}
+
+
+  {% block main %}
+
+{% if  craft.app.request.isAjax %}
+
+
+
+
+{% paginate craft.entries.section('trendsAndInsights').orderBy('postdate desc').relatedTo(category).limit(12) as pageInfo, posts %}
+
+{% for post in posts %}
+  {% include "_partials/blog-post" %}
+{% endfor %}
+
+{% if pageInfo.nextUrl %}
+<div class="load-more-btn text-center mb-100 mt-60 col-12" data-page = "/expertise-and-research/{{ category.slug }}/p">
+  Load more <img src="/assets/icons/down-arrow.svg" alt="down arrow">
+</div>
+{% endif %}
+
+
+
+{% else %}
+
+
+
+
+
+
+{% set entry = craft.entries.id(246)%}
+
+
+<div class="container mb-80  mt-100 mt-md-40 mb-sm-40">
+  <h1 class="purple text-center purple mb-40">Expertise & Research</h1>
+<p class="large text-center mb-30">{{ entry.snippet|striptags }}</p>
+  <div class="row">
+    <div class="col-md-10 offset-md-1 text-center ">
+  <div class="row align-center justify-center">
+    <div class="col-12 col-md-3 center-sm text-right mb-sm-10">
+    <h4 class="purple ">Filter By:</h4>
+    </div>
+      <div class="col-12 col-md-9 text-left">
+    <select name="" id="" class = "select-filter block mr-0 ml-sm-auto mr-sm-auto">
+      <option value="" selected disabled>{{ category.title }}</option>
+      <option value="/expertise-and-research">All</option>
+      {% for cat in craft.categories.group("trendsAndInsights").all %}
+        <option value="{{ cat.url }}">{{ cat.title }}</option>
+      {% endfor %}
+    </select>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="post-list mb-100 mb-md-0">
+    <div class="row">
+      {% paginate craft.entries.section('trendsAndInsights').orderBy('postdate desc').relatedTo(category).limit(12) as pageInfo, posts %}
+
+      {% for post in posts %}
+        {% include "_partials/blog-post" %}
+      {% endfor %}
+      {% if pageInfo.nextUrl %}
+      <div class="load-more-btn text-center mb-100 mt-60 col-12" data-page = "/expertise-and-research/{{ category.slug }}/p">
+        Load more <img src="/assets/icons/down-arrow.svg" alt="down arrow">
+      </div>
+      {% endif %}
+
+
+
+
+  </div>
+</div>
+
+</div>
+
+
+
+<div class="loading-container">
+<div class="loader-2 center"><span></span></div>
+
+</div>
+
+
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "_layouts/blog" %}
+
+
+  {% block main %}
+
+{% if  craft.app.request.isAjax %}
+
+{% paginate craft.entries.section('newsAndEvents').limit(12) as pageInfo, posts %}
+
+{% for post in posts %}
+  {% include "_partials/blog-post" %}
+{% endfor %}
+
+
+{% if pageInfo.nextUrl %}
+<div class="load-more-btn text-center mb-100 mt-60 col-12" data-page = "/news-and-events/p">
+  Load more <img src="/assets/icons/down-arrow.svg" alt="down arrow">
+</div>
+{% endif %}
+
+
+
+{% else %}
+
+
+<div class="container mb-80  mt-100 mt-md-40 mb-sm-40">
+  <h1 class="purple text-center purple  mb-40 mb-sm-20">News & Events</h1>
+<p class="large text-center mb-30">{{ entry.header|striptags }}</p>
+  {% if craft.categories.group("newsAndEvents") | length > 1 %}
+  <div class="row">
+    <div class="col-md-10 offset-md-1 text-center ">
+  <div class="row align-center justify-center">
+    <div class="col-12 col-md-3 center-sm text-right mb-sm-10">
+    <h4 class="purple ">Filter By:</h4>
+    </div>
+    <div class="col-12 col-md-9 text-left">
+    <select name="" id="" class = "select-filter">
+      <option value="" selected disabled>Categories</option>
+      <option value="/news-and-events">All</option>
+      {% for cat in craft.categories.group("newsAndEvents").all %}
+        <option value="{{ cat.url }}">{{ cat.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+    </div>
+      </div>
+
+    </div>
+
+  {% endif %}
+</div>
+
+
+<div class="container">
+  <div class="post-list mb-100">
+    <div class="row">
+      {% paginate craft.entries.section('newsAndEvents').limit(12)  as pageInfo, posts %}
+
+      {% for post in posts %}
+        {% include "_partials/blog-post" %}
+      {% endfor %}
+  </div>
+</div>
+
+{% if pageInfo.nextUrl %}
+<div class="load-more-btn text-center mb-100 mt-60 col-12" data-page = "/news-and-events/p">
+  Load more <img src="/assets/icons/down-arrow.svg" alt="down arrow">
+</div>
+{% endif %}
+
+</div>
+
+<div class="loading-container">
+<div class="loader-2 center"><span></span></div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

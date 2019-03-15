@@ -1,0 +1,14 @@
+{% if not craft.app.request.isAjax %}
+  {% include "_partials/header" %}
+{% endif %}
+
+  {% block main %}
+
+
+  {% endblock %}
+
+
+
+  {% if  not craft.app.request.isAjax %}
+    {% include "_partials/footer" %}
+  {% endif %}

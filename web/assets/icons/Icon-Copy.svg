@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="12px" viewBox="0 0 22 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon-Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
+        <g id="arrow-r" transform="translate(11.000000, 6.000000) rotate(-90.000000) translate(-11.000000, -6.000000) translate(5.000000, -5.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Design">
+                <g id="contact">
+                    <g id="links">
+                        <path d="M0.35411575,11.458015 C-0.11803925,10.974917 -0.11803925,10.19175 0.35411575,9.708652 L9.65987475,0.181162 C9.89564775,-0.060387 10.2784758,-0.060387 10.5142498,0.181162 L11.3686238,1.055843 C11.6043978,1.297392 11.6043978,1.688975 11.3686238,1.930525 L3.34381975,10.145681 C3.10804675,10.38723 3.10804675,10.779436 3.34381975,11.020363 L11.3686238,19.236142 C11.6043978,19.477691 11.6043978,19.869275 11.3686238,20.110824 L10.5142498,20.985505 C10.2784758,21.227054 9.89564775,21.227054 9.65987475,20.985505 L0.35411575,11.458015 Z" id="Icon-Copy" transform="translate(5.772727, 10.583333) scale(-1, 1) translate(-5.772727, -10.583333) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

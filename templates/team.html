@@ -1,0 +1,140 @@
+{% extends "_layouts/products" %}
+{% block main %}
+
+{% for banner in entry.banner %}
+<div class="banner-slant-jumbotron small-img" {% for img in banner.image %}style="background-image: url({{ img.url }})"{% endfor %}>
+  <img src="/assets/icons/why-kony-bg.svg" alt="" role="presentation" class="why-kony-pattern">
+    <div class="content-holder">
+      <div class="half-container-left half-container mr-auto relative ml-30">
+        <h1 class=" white">{{ banner.header }}</h1>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+  <div class="large-container pt-120 pt-lg-80 pb-30 pt-md-40">
+<div class="row text-center mb-90 mb-sm-50 justify-center">
+    {% for icon in entry.iconRow %}
+          <div class="col-lg-4 col-md-6 col-12  pt-sm-25 pl-sm-20 pr-sm-20 mb-10 mb-md-20 pr-50 pl-50  pr-xl-30 pl-xl-30 pb-30 waypoint-transition {% if not loop.last %}right-border no-border-lg{% endif %}">
+            <div class="bump-up">
+        {% for icon in icon.icon %}<img src="{{ icon.url }}" alt="{{ icon.title }}" class="mb-10 circle-icon">{% endfor %}
+        <p class="large purple">{{ icon.header }}</p>
+        <p>{{ icon.description }}</p>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+<div class="row">
+  <div class="col-12">
+  <h2 class="purple text-center">{{ entry.header }}</h2>
+  </div>
+</div>
+
+
+</div>
+{% for team in entry.managementTeam.all %}
+<div class="light-grey-background pt-90 pb-120 pt-lg-60 pb-lg-50">
+  <div class="small-container  text-center">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h3 class="purple mb-15">{{ team.headline}}</h3>
+        <p class ="mb-20">{{ team.description }}</p>
+      </div>
+    </div>
+
+    <div class="row justify-center pl-lg-90 pr-lg-90 pl-sm-15 pr-sm-15">
+      {% for member in team.teamMember %}
+      <div class="col-lg-3 col-md-6 col-sm-6 mb-lg-30">
+        {% for head in member.headshot %}<img src="{{ head.url }}" alt="{{ head.title }}">{% endfor %}
+        <h4 class="purple">{{ member.title }}</h4>
+        <h5 class="grey">{{ member.jobTitle }}</h5>
+      </div>
+      {% endfor %}
+
+
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+
+{% for gallery in entry.gallery %}
+
+
+
+<div class="purple-gradient-background bottom-bar-background pt-120 pb-100 pt-lg-60 pb-lg-80 pb-sm-50 pt-sm-50">
+  <div class="small-container">
+  <div class="row align-center justify-center text-center">
+  <div class="col-lg-8 ">
+    <h3 class="white mb-10">{{ gallery.header }}</h2>
+    <p class="white mb-30">{{ gallery.descriptions }}</p>
+  </div>
+  </div>
+  </div>
+      <div class="container mb-80">
+  <div class="row">
+    <div class="col-12 relative pr-xl-60 pl-xl-60">
+      <div class="connect-prev">
+        <img src="/assets/icons/purple-arrow-left.svg" alt="" role = "presentation">
+      </div>
+      <div class="connect-next">
+        <img src="/assets/icons/purple-arrow-right.svg" alt="" role = "presentation">
+      </div>
+      <div class="img-carousel">
+        {% for img in gallery.gallery %}
+          <div class="pl-5 pr-5">
+            <img src="{{ img.url }}" alt="{{ img.title }}" class = "img-responsive">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="small-container">
+  <div class="row">
+    <div class="col-12 text-center">
+          <a href="#" class="white-link contact-btn">Connect With Us</a>
+    </div>
+  </div>
+</div>
+</div>
+
+
+{% endfor %}
+
+
+
+<div class=" pt-120 pb-120 pt-lg-60 pb-lg-60">
+  <div class="small-container">
+
+
+    <div class="row align-center justify-center">
+      <div class="col-lg-6 pr-0 pr-sm-15 pl-lg-25 pr-lg-25 mb-lg-30">
+        <a href="https://dbx.kony.com/openbanking" target="_blank">
+            <div class="img-blog-holder waypoint-transition">
+              <img src="/uploads/blog/open-banking.jpg" alt="Open Banking" class="img-responsive-lg mr-lg-auto ml-lg-auto">
+            </div>
+        </a>
+      </div>
+      <div class="col-lg-6 pl-50 pl-lg-25 pr-lg-25">
+        <h3 class="purple mb-5"><a href="https://dbx.kony.com/openbanking" target="_blank" class="purple">Open Banking</a></h3>
+        <h6 class="text-uppercase mb-15 lavendar"> &nbsp;&nbsp;|&nbsp;&nbsp; Jan 17th 2018</h6>
+        <p class=" mb-20">Open banking is the concept of leveraging open APIs to enhance existing digital offerings as well as bringing new digital offerings to market. For this to happen banks will need to open their data and develop, manage, and maintain secure APIs that third party providers may consume.</p>
+        <a href="https://dbx.kony.com/openbanking" class="purple-link purple" target="_blank">Read More</a>
+      </div>
+    </div>
+
+
+</div>
+</div>
+
+
+  {% set post = entry.featuredPost.one %}
+
+
+
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "_layouts/products" %}
+{% block main %}
+{% cache %}
+{% for block in entry.productsLandingPage.all %}
+
+  {% if block.type == "banner"%}
+  <div class="purple-background  relative">
+    <div class="cross-but-more-left"></div>
+    <div class="overview-holder">
+    <div class="small-container pt-80 pb-30 pb-xl-50 pt-lg-50">
+      <div class="row align-center reverse-wrap">
+        <div class="col-xl-6 col-lg-10 offset-lg-1  offset-xl-0 pr-0 center-xl pr-xl-15">
+          <h1 class = "mb-20 white h3">{{ block.header }}</h1>
+          <h4 class="white mb-20">{{ block.secondaryText }}</h4>
+          <p class="white mb-40">{{ block.description }} </p>
+            <a href="{{ block.videoLink }}" class="btn purple video-btn  mb-10  " data-link = "{{ block.videoLink }}">{{ block.videoLinkText }}</a>
+            {% if block.secondaryVideoLinkText | length %}<a href="{{ block.secondaryVideo }}" class="btn purple video-btn mr-10 ml-10 mb-10 " data-link = "{{ block.secondaryVideo }}">{{ block.secondaryVideoLinkText }}</a> {% endif %}
+        </div>
+        <div class="col-xl-6 center-xl">
+          <div class="relative product-overview-container">
+          <div class="products-overview-phone absolute">
+            <img src="{{ block.phoneScreenshot.one.url }}" alt="{{ block.phoneScreenshot.one.title }}" class = "responsive-img-md" >
+            {% for vid in block.video.all %}
+            <div class="video-{{ loop.index }}-holder">
+              <video src="{{ vid.url}}" autoplay loop muted  {% if vid.poster | length %} poster = "{{ vid.poster.one.url}}" {% endif %} class = " hidden-sm video-{{ loop.index }}"></video>
+            </div>
+            {% endfor %}
+          </div>
+          <img src="{{ block.laptopScreenshot.one.url }}" alt="{{ block.laptopScreenshot.one.title }}" class = "products-overview-laptop img-responsive-md" >
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  {% elseif block.type == "bankingSolutions" %}
+
+
+
+
+
+  <div class="white-background relative pt-120 pb-60 pt-lg-60 pb-lg-50">
+      {% include "_partials/appsuite" %}
+  </div>
+
+  {% elseif block.type == "platformHighlights" %}
+
+  <div class="purple-gradient-background pt-100 pb-100 pt-lg-60 pb-lg-40">
+    <div class="large-container  ">
+      <div class="row mb-60">
+        <div class="col-lg-8 offset-lg-2 text-center">
+          <h2 class="white mb-10">
+            {{ block.header }}
+          </h2>
+          <p class="large white pr-30 pl-30 pr-sm-0 pl-sm-0 ">{{block.secondaryText}}</p>
+        </div>
+      </div>
+      <div class="row ">
+        {% for icon in block.icons.all %}
+        <div class="col-lg-3  col-sm-6  mb-70 pr-40 pl-40 mb-xl-40 pr-xl-20 pl-xl-20 pr-sm-15 pl-sm-15 text-center ">
+          <img src="{{ icon.icon.one.url }}" alt="{{ icon.icon.one.title }}" class = " mt-5 bright-icon waypoint-transition slide-right large-icon">
+          <p class = "white">{{ icon.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+  {% elseif block.type == "testimonials" %}
+
+  {% include "_partials/testimonial"%}
+
+
+  {% elseif block.type == "digitalBankingMarketplace" %}
+
+
+    {% include "/_partials/digital-banking-marketplace" %}
+
+  {% elseif block.type == "featuredPost" %}
+  <div class="container pt-120 pb-120 pt-lg-60 pb-lg-60 pb-mb-40">
+    <div class="text-center">
+      <h2 class="purple mb-70 mb-sm-40">Expertise & Research</h2>
+    </div>
+    <div class="row">
+      {% for post in block.post.all() %}
+        {% include "_partials/blog-post" %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+
+
+
+{% endfor %}
+
+{% endcache %}
+{% endblock %}

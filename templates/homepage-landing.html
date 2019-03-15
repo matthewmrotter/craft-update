@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/combined.css">
+  {% hook 'seomaticRender' %}
+</head>
+<body style = "padding-top: 0;">
+
+{% set entry = craft.entries.id(2).one %}
+
+
+{% block main %}
+  {% for block in entry.homepage.all()  %}
+    {% if block.type == "banner" %}
+    <div class="purple-background pb-xl-40 banner relative">
+      <div class="cross-but-more-left"></div>
+        <div class="container pt-60 pb-30 pt-sm-30">
+          <div class="row align-center">
+            <div class="col-xl-6 banner-sample mb-xl-50 mb-sm-30 text-center-xl">
+              <div class="home-video-sample relative inline-block">
+                <img src="/assets/images/banner-sample.png" alt="" role = "presentation" class = "pr-xl-50 pr-md-0 img-responsive-lg">
+                <video src="/assets/videos/retail-banking-phone-2.mp4" autoplay loop></video>
+              </div>
+              </div>
+            <div class="col-xl-6 center-xl text-center-xl">
+              <h1 class = "mb-20 white">{{ block.header }}</h1>
+              <p class="white mb-40">{{ block.description | striptags("<em><i><b>") | raw  }}</p>
+              <a href="{{ block.button1Link }}" data-link = "{{ block.button1Link }}" class="btn lavendar mr-10 mr-sm-auto mb-sm-20 mr-sm-10 ml-sm-10 video-btn" >{{ block.button1Text }}</a>
+              <a href="{{ block.button2Link }}" class="btn lavendar ml-10 mr-sm-auto mr-sm-10 mr-sm-10">{{ block.button2Text }}</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    {% elseif block.type == "featuredClients" %}
+      <div class="small-container text-center relative mt-100 mt-lg-70 mt-md-50 mb-60 mb-sm-20">
+        <h2 class="purple  purple  mb-40 mb-sm-10">Featured Clients</h2>
+        <p class="large">{{ block.header }}</p>
+      </div>
+      <div class="large-container  relative mb-100 mb-md-70  mb-sm-50" >
+        <div class="row align-center justify-center">
+           {% for client in block.clients.all() %}
+              <div class="client-logo align-center justify-center pr-30 pl-30">
+                <img src="{{ client.logo.one.url }}" alt="{{ client.logo.one.title }}" >
+              </div>
+           {% endfor %}
+      </div>
+      </div>
+    {% elseif block.type == "featuredBlogPost" %}
+      {% set post = block.post.one %}
+      {% include "_partials/related-article-purple"%}
+    {% elseif block.type == "testimonials" %}
+
+      {% include "_partials/testimonial.html" %}
+
+    {% elseif block.type == "additionalInsights" %}
+      <div class="container pt-120 pb-120 pt-lg-60 pb-lg-60 pb-mb-40">
+        <div class="text-center">
+          <h2 class="purple mb-70 mb-sm-40">Expertise & Research</h2>
+        </div>
+        <div class="row">
+          {% for post in block.insight.all() %}
+            {% include "_partials/blog-post" %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+
+
+  {% endblock %}
+
+
+
+  <div class="pt-80 pb-50 dark-purple-background relative">
+  	<div class="cross-background"></div>
+  	<div class="container">
+  		<div class="text-center relative">
+  			<h3 class="white">The future of banking is here. Be ready for what’s next.</h3>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-6 text-center right-white-border no-right-border-md pt-30 pb-30 mt-50 mb-40 pt-sm-0 pb-sm-0 mt-sm-20">
+  				<p class="white mb-15">Request More information</p><a class="btn mr-10 purple text-uppercase" href="http://forms.kony.com/digital-banking-en-contact.html" target = "_blank" >Talk to an Advisor</a>
+  			</div>
+  			<div class="col-md-6 text-center pt-30 pb-30 mt-50 mb-40 mt-sm-0 mb-sm-0">
+  				<p class="white mb-15 mb-sm-0">Sign up for the latest from Kony DBX</p>
+  				<div class="newsletter-signup">
+  					<script src="//app-sjf.marketo.com/js/forms2/js/forms2.min.js"></script>
+  					<form id="mktoForm_2761" name="mktoForm_2761"></form>
+  					<script>MktoForms2.loadForm("//app-sjf.marketo.com", "656-WNA-414", 2761);</script>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  <footer class="">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-lg-6 col-md-12">
+  				<form action="{{ url('search') }}" class="header__search search" id="kony-footer-search-form">
+  					<div class="form-item form-type-textfield form-item-search form-group">
+  	    <input type="search" name="q"  class="ui-autocomplete-input form-control form-text" id="edit-search" placeholder="Search Kony">
+  				</div>
+  					<div class="search-icon">
+  							<i class="fa fa-search"></i>
+  	    	<input type="submit" value="Go" class="header__search__submit form-submit btn btn-default btn-primary" id="edit-submit">
+  				</div>
+  					</form>
+  				<div id="fancybox_search" style="display:none;">
+  					<h2 class="-small"><i class="fa fa-search"></i>Required field</h2>
+  					<p>Please enter a search term to begin searching.</p>
+  				</div>
+  			</div>
+  			<div class="col-lg-6 col-md-12 center-lg mt-lg-30">
+  				<div class="footer__social">
+  					<div class="item-list">
+  						<ul class="mt-0 mb-0 pl-0">
+  							<li class="twitter first">
+  								<a href="https://twitter.com/Kony" target="_blank"><span class="fa-stack icon-stack"><i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-twitter fa-stack-1x fa-inverse fa-lg icon-light"></i></span></a>
+  							</li>
+  							<li class="facebook">
+  								<a href="https://www.facebook.com/pages/Kony/130841488764" target="_blank"><span class="fa-stack icon-stack"><i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-facebook fa-stack-1x fa-inverse fa-lg icon-light"></i></span></a>
+  							</li>
+  							<li class="linkedin">
+  								<a href="https://www.linkedin.com/company/kony-inc/" target="_blank"><span class="fa-stack icon-stack"><i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-linkedin fa-stack-1x fa-inverse fa-lg icon-light"></i></span></a>
+  							</li>
+  							<li class="youtube">
+  								<a href="https://www.youtube.com/user/KonySolutionsTV" target="_blank"><span class="fa-stack icon-stack"><i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-youtube-play fa-stack-1x fa-inverse fa-lg icon-light"></i></span></a>
+  							</li>
+  							<li class="google">
+  								<a href="https://plus.google.com/108006109343739267055/posts" target="_blank"><span class="fa-stack icon-stack"><i class="fa fa-circle fa-stack-2x"></i> <i class="fa fa-google-plus fa-stack-1x fa-inverse fa-lg icon-light"></i></span></a>
+  							</li>
+  							<li class="glassdoor last">
+  								<a href="https://www.glassdoor.com/Overview/Working-at-Kony-EI_IE306538.11,15.htm" target="_blank"><span class="fa-stack icon-stack"><i class="fa fa-circle fa-stack-2x"></i> <i class=" fa icon-glassdoor fa-stack-1x fa-inverse fa-lg"></i></span></a>
+  							</li>
+  						</ul>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-12 col-sm-12 footer__content">
+  				<p class="copyrights mb-0">© Copyright {{ now | date("Y") }} Kony, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
+  				<div class="item-list">
+  					<ul class="footer__fineprint text-center mb-0 mt-0 pl-0">
+  						<li class="first last privacy-policy text-center block">
+  							<a class="white" href="https://www.kony.com/privacy-statement">Privacy Statement</a>
+  						</li>
+  					</ul>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  	<div class="modal-backdrop">
+  		<div class="modal-container relative">
+  			<div class="close-btn">
+  				<svg height="75px" version="1.1" viewbox="0 0 75 75" width="75px" xmlns="http://www.w3.org/2000/svg">
+  				<g fill="#FFFFFF" id="About-Propel" transform="translate(-758.000000, -755.000000)">
+  					<g id="imgLeft" transform="translate(0.000000, 394.000000)">
+  						<g id="close" transform="translate(756.000000, 359.000000)">
+  							<rect height="10.1819805" id="Rectangle-5" rx="5.09099026" transform="translate(39.500000, 39.500000) rotate(45.000000) translate(-39.500000, -39.500000)" width="101.540891" x="-11.2704455" y="34.4090097"></rect>
+  							<rect height="10.1819805" id="Rectangle-5" rx="5.09099026" transform="translate(39.500000, 39.500000) rotate(-45.000000) translate(-39.500000, -39.500000)" width="101.540891" x="-11.2704455" y="34.4090097"></rect>
+  						</g>
+  					</g>
+  				</g></svg>
+  			</div>
+  			<div class="video-wrapper">
+  				<iframe frameborder="0" src=""></iframe>
+  			</div>
+  		</div>
+  	</div>
+  	<div class="contact-modal flex align-center justify-center">
+  		<div class="contact-bg"></div>
+  		<div class="close">
+  			<svg height="33px" version="1.1" viewbox="0 0 33 33" width="33px" xmlns="http://www.w3.org/2000/svg">
+  			<desc>
+  				Created with Sketch.
+  			</desc>
+  			<defs></defs>
+  			<g fill="none" fill-rule="evenodd" id="Design" stroke="none" stroke-width="1">
+  				<g fill="#FFFFFF" id="contact" transform="translate(-1280.000000, -176.000000)">
+  					<polygon id="Page-1" points="1307.21034 176 1296.5 186.710344 1285.78966 176 1280 181.789656 1290.71089 192.499454 1280 203.210344 1285.78966 209 1296.5 198.28911 1307.21034 209 1313 203.210344 1302.28966 192.499454 1313 181.789656"></polygon>
+  				</g>
+  			</g></svg>
+  		</div>
+  		<div class="contact-modal-container">
+  			<h5 class="text-uppercase white">How can we help you?</h5>
+  			<hr class="white mb-40">
+  			<h3 class="mb-40"><a class="white arrow-link" href="http://forms.kony.com/digital-banking-en-contact.html"  target = "_blank">Contact an Advisor</a></h3>
+  			<h3 class="mb-40"><a class="white arrow-link" href="https://basecamp.kony.com/s/">Get Support</a></h3>
+  			<div class="contact-social flex flex-end">
+  				<h3 class = "white">Connect with us:</h3>
+  				<a class="mr-10 ml-15" href="https://www.facebook.com/KonyInc" target = "_blank">
+  					<img alt="facebook link" src="/assets/icons/contact-facebook.svg">
+  				</a>
+  				<a class="mr-10 ml-15" href="https://www.linkedin.com/company/kony-inc?trk=tyah"  target = "_blank">
+  					<img alt="linkedin link" src="/assets/icons/contact-linkedin.svg">
+  				</a>
+  				<a class="mr-10 ml-15" href="https://twitter.com/kony"  target = "_blank">
+  					<img alt="twitter link" src="/assets/icons/contact-twitter.svg">
+  				</a>
+  			</div>
+  		</div>
+  	</div>
+  	<div class="video-backdrop">
+  		<div class="video-container relative">
+  			<svg class="close-btn" height="75px" version="1.1" viewbox="0 0 75 75" width="75px" xmlns="http://www.w3.org/2000/svg">
+  			<g fill="#FFFFFF" id="About-Propel" transform="translate(-758.000000, -755.000000)">
+  				<g id="imgLeft" transform="translate(0.000000, 394.000000)">
+  					<g id="close" transform="translate(756.000000, 359.000000)">
+  						<rect height="10.1819805" id="Rectangle-5" rx="5.09099026" transform="translate(39.500000, 39.500000) rotate(45.000000) translate(-39.500000, -39.500000)" width="101.540891" x="-11.2704455" y="34.4090097"></rect>
+  						<rect height="10.1819805" id="Rectangle-5" rx="5.09099026" transform="translate(39.500000, 39.500000) rotate(-45.000000) translate(-39.500000, -39.500000)" width="101.540891" x="-11.2704455" y="34.4090097"></rect>
+  					</g>
+  				</g>
+  			</g></svg>
+  			<div class="video-wrapper">
+  				<iframe frameborder="0" src=""></iframe>
+  			</div>
+  		</div>
+  	</div>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js">
+  </script>
+  <script src="/assets/js/swiper.min.js">
+  </script>
+  <script>(function ($){$(window).load(function(){$(".mktoButton").text(); $(".mktoLabel").each(function(){var label=$(this); var placeholder=label.text(); if (placeholder=="*Email Address:"){placeholder="Email"}label.closest(".mktoFieldWrap").find("input").attr("placeholder", placeholder).val(""); label.css('display','none');});});})(jQuery);</script>
+
+  <script>
+
+
+  $("a").click(function(e){
+    e.preventDefault();
+  });
+
+   $(".slider-2").slick({
+     slidesToShow: 5,
+     prevArrow: $('.client-prev'),
+  nextArrow: $('.client-next'),
+  responsive: [
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1
+        }
+      },
+
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
+
+  $(".testimonial-slider").slick({
+    slidesToShow: 1,
+    prevArrow: $('.prev-test'),
+  nextArrow: $('.next-test')
+  });
+
+
+  $(".slick-testimonials").slick({
+  	prevArrow: $('.test-prev'),
+  nextArrow: $('.test-next'),
+  slidesToShow: 3,
+  dots: true,
+  responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+
+
+  $(".nav-toggle").click(function(){
+      $(".main-nav").toggleClass("opened");
+      $(this).toggleClass("opened");
+  		if(!$(this).hasClass ("opened")){
+  			$(".contact-modal").removeClass("opened");
+  		}
+  })
+  if($(".nav-toggle").css( "display") == "block"){
+  $(".has-drop > a").click(function(e){
+      e.preventDefault();
+      $(this).parent().find(".drop").addClass("opened");
+  })
+
+  $(".back").click(function(e){
+    e.preventDefault();
+    $(this).parents(".drop").removeClass("opened");
+  })
+  }
+
+
+
+  $(".contact-btn").click(function(e){
+  	e.preventDefault();
+  	$(".contact-modal").toggleClass("opened");
+  })
+  $(".close").click(function(){
+  	$(".contact-modal").toggleClass("opened");
+  })
+
+
+
+
+  $(".video-btn").click(function(e){
+
+  var leg= $(this).data("link") + "?rel=0&autoplay=1";
+  e.preventDefault();
+  $(".video-backdrop").addClass("show-me");
+  $(".video-backdrop iframe").attr("src",leg);
+  })
+
+  $(".video-backdrop").click(function(){
+  $(".video-backdrop").removeClass("show-me");
+    $(".video-backdrop iframe").attr("src","");
+  })
+
+
+  var page = 2;
+
+
+  $('body').on('click', '.load-more-btn', function() {
+  	$(".loading-container").addClass("show-me");
+  	var response;
+  	$.ajax({ type: "GET",
+  	     url: window.location.pathname + "/pages/p"+page,
+  	     dataType : 'html',
+  	     success : function(response)
+  	     {
+  						 page++;
+  					   refreshProjects(response);
+  	     }
+
+  })
+
+  })
+
+  function refreshProjects(response){
+
+  $(".load-more-btn").hide();
+  $('.post-list').append('<div class = "row ">'+response+'</div>');
+  $(".loading-container").removeClass("show-me");
+
+  }
+
+
+
+
+
+  $(".select-filter").change(function(){
+  		$(".loading-container").addClass("show-me");
+  	var cat = $(this).val();
+  	var response;
+  	$.ajax({ type: "GET",
+  		url: window.location.pathname + "/categories?cat="+ $(this).val(),
+  	     dataType : 'html',
+  	     success : function(response)
+  	     {
+  						 page = 2;
+  					   filterProjects(response, cat);
+  	     }
+
+  })
+
+  })
+
+
+
+
+
+
+  function filterProjects(response, cat){
+
+
+  $('.post-list').replaceWith('<div class = "post-list  mb-100"><div class = "row ">'+response+'</div></div>');
+  $(".load-more-btn").hide();
+
+  if (cat == "All") {
+  	$(".load-more-btn").show();
+  }
+
+  $(".loading-container").removeClass("show-me");
+
+  }
+
+
+
+
+  </script>
+
+
+  </body>

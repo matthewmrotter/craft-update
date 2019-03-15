@@ -1,0 +1,26 @@
+{% extends "_layouts/products" %}
+{% block main %}
+{% cache %}
+
+
+  {% if entry.type == "product" %}
+
+    {% include "products-and-solutions/_product-layout.html" %}
+
+
+    {% elseif  entry.type == "quickview" %}
+
+
+      {% include "products-and-solutions/_overview.html" %}
+
+  {% else %}
+
+
+
+    {% include "products-and-solutions/_digital-banking-platform.html" %}
+
+  {% endif %}
+
+
+{% endcache %}
+{% endblock %}

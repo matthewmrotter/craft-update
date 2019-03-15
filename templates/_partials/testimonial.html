@@ -1,0 +1,17 @@
+
+  <div class="img-background pt-100 pb-100 pt-lg-70 pb-lg-30 pt-sm-30 pb-md-30 pr-sm-0 pl-sm-0" style = "background-image: url(/assets/images/testimonial-bg.jpg)">
+      <div class="small-container testimonial-container relative pr-xl-90 pl-xl-90 pr-lg-50 pl-lg-50  pr-md-25 pl-md-25 pr-sm-5 pl-sm-5">
+        <div class="testimonial-slider">
+          {% for testimonial in block.testimonial.all() %}
+          <div class="slide text-center pt-20 pb-20">
+            <img src="{{ testimonial.testimonialLogo.one().url }}" alt="{{ testimonial.testimonialLogo.one().title }}" class = "mb-40">
+            <p class="large mb-50 mb-sm-30">{{ testimonial.testimonial  |striptags }}</p>
+            <cite>{{ testimonial.testimonialCitation  }}</cite>
+            <cite class = "position">{{ testimonial.testimonialPosition }}</cite>
+          </div>
+          {% endfor %}
+        </div>
+      <div class="next next-test"><img src="/assets/icons/carousel-arrow-r.svg" alt="arrow r"></div>
+      <div class="prev prev-test"><img src="/assets/icons/carousel-arrow-l.svg" alt="arrow l"></div>
+      </div>
+  </div>

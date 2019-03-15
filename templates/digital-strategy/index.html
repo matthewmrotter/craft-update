@@ -1,0 +1,274 @@
+{% extends "_layouts/main" %}
+
+{% block main %}
+
+
+
+  <div class="strategy-bg img-background pt-70 pb-100 pl-90" style = "background-image:url(/assets/images/strategy-bg.jpg)">
+    <div class="container relative questionaire">
+
+        <div class="question-number">
+          <div class="number active" data-number = "1">1</div>
+          <div class="number" data-number = "2">2</div>
+          <div class="number" data-number = "3">3</div>
+          <div class="number" data-number = "4">4</div>
+          <div class="number" data-number = "5">5</div>
+          <div class="number" data-number = "6">6</div>
+          <div class="number" data-number = "7">7</div>
+          <div class="number" data-number = "8">8</div>
+          <div class="number" data-number = "9">9</div>
+        </div>
+
+
+
+
+
+
+
+            {% set form = craft.freeform.form("konyDigitalBankingMaturity") %}
+            {{ form.renderTag }}
+            <div class="question-holder active" data-question="1">
+            	<label class = "h5 white text-uppercase mb-15 block"for="form-input-question1 " >Question 1</label>
+            	<h2 class="white mb-20">
+            	 	How is your digital vision integrated into the business?
+              </h2>
+              <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+              <div class="radio-group">
+                <label class = "mb-15">
+                  <input class="" id="form-input-question1-0" name="question1" type="radio" value="It is fully integrated in the business plan" data-value = "4">
+                  It is fully integrated in the business plan
+                  <span class = "radio-btn"></span>
+                </label>
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question1-1" name="question1" type="radio" value="It is developed but not integrated into the business plan" data-value = "3">
+                    It is developed but not integrated into the business plan
+                    <span class = "radio-btn"></span>
+                  </label>
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question1-2" name="question1" type="radio" value="Beginning to think about one" data-value = "2">
+                    Beginning to think about one
+                  <span class = "radio-btn"></span></label>
+                  <label class = "mb-15">
+                  <input class="" id="form-input-question1-3" name="question1" type="radio" value="No digital vision at all" data-value = "1">No digital vision at all
+                  <span class = "radio-btn"></span>
+                </label>
+              </div>
+              <div class="bottom-bit">
+                <hr class="white ">
+                <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+              </div>
+            </div>
+
+            <div class="question-holder" data-question="2">
+              	<label class = "h5 white text-uppercase mb-15 block" for="form-input-question2">Question 2</label>
+              	<h2 class="white mb-20">
+              		How is your digital vision integrated into the business?
+              	</h2>
+                <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                <div class="radio-group">
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question2-0" name="question2" type="radio" value="How is your digital vision integrated into the business?" data-value = "4">
+                    How is your digital vision integrated into the business?
+                    <span class = "radio-btn"></span>
+                  </label>
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question2-1" name="question2" type="radio" value="It is developed but not integrated into the business plan" data-value = "3">
+                    It is developed but not integrated into the business plan
+                    <span class = "radio-btn"></span>
+                    </label>
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question2-2" name="question2" type="radio" value="Beginning to think about one" data-value = "2">
+                    Beginning to think about one
+                  <span class = "radio-btn"></span>
+                </label>
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question2-3" name="question2" type="radio" value="No digital vision at all" data-value = "1">
+                    No digital vision at all
+                  <span class = "radio-btn"></span>
+                </label>
+              </div>
+              <div class="bottom-bit">
+                <hr class="white ">
+                <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+              </div>
+            </div>
+
+            <div class="question-holder" data-question="3">
+            	<label class = "h5 white text-uppercase mb-15 block"  for="form-input-question3">Question 3</label>
+            	<h2 class="white mb-20">
+            		Which people, processes or technologies make it difficult to compete/innovate?
+            	</h2>
+                  <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                  <div class="radio-group">
+                  <label class = "mb-15">
+                  <input class="" id="form-input-question3-0" name="question3" type="radio" value="We are agile and responsive and can develop offerings in response to the market/customers" data-value = "4">We are agile and responsive and can develop offerings in response to the market/customers
+                    <span class = "radio-btn"></span>
+                  </label>
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question3-1" name="question3" type="radio" value="Not enough resources to do what we want to do quickly enough" data-value = "3">Not enough resources to do what we want to do quickly enough
+                      <span class = "radio-btn"></span>
+                    </label>
+                    <label class = "mb-15">
+                    <input class="" id="form-input-question3-2" name="question3" type="radio" value="We are wary of digital or lack the skills and knowledge" data-value = "2">We are wary of digital or lack the skills and knowledge
+                      <span class = "radio-btn"></span>
+                    </label>
+                  <label class = "mb-15">
+                    <input class="" id="form-input-question3-3" name="question3" type="radio" value="We do not have the core technologies or providers" data-value = "1">We do not have the core technologies or providers
+                      <span class = "radio-btn"></span>
+                  </label>
+              </div>
+              <div class="bottom-bit">
+                <hr class="white ">
+                <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+              </div>
+            </div>
+
+              <div class="question-holder" data-question="4">
+              	<label class = "h5 white text-uppercase mb-15 block"  for="form-input-question4">Question 4</label>
+              	<h2 class="white mb-20">
+              		How do your digital banking experiences compare to other credit unions?
+              	</h2>
+                  <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                    <div class="radio-group">
+                  <label class = "mb-15"><input class="" id="form-input-question4-0" name="question4" type="radio" value="Ahead of the curve" data-value = "4">Ahead of the curve    <span class = "radio-btn"></span></label>
+                  <label class = "mb-15"><input class="" id="form-input-question4-1" name="question4" type="radio" value="Competitive" data-value = "3">Competitive    <span class = "radio-btn"></span></label>
+                  <label class = "mb-15"><input class="" id="form-input-question4-2" name="question4" type="radio" value="Slightly competitive" data-value = "2">Slightly competitive    <span class = "radio-btn"></span></label>
+                  <label class = "mb-15"><input class="" id="form-input-question4-3" name="question4" type="radio" value="Behind the curve" data-value = "1">Behind the curve    <span class = "radio-btn"></span></label>
+                  </div>
+                  <div class="bottom-bit">
+                    <hr class="white ">
+                    <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+                  </div>
+              </div>
+
+            <div class="question-holder" data-question="5">
+            	<label class = "h5 white text-uppercase mb-15 block" for="form-input-question5">Question 5</label>
+            	<h2 class="white mb-20">
+            		How do your digital banking experiences compare to bigger banks?
+            	</h2>
+                <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                <div class="radio-group">
+
+              <label class = "mb-15"><input class="" id="form-input-question5-0" name="question5" type="radio" value="Competitive" data-value = "4">Competitive <span class = "radio-btn"></span></label>
+              <label class = "mb-15"><input class="" id="form-input-question5-1" name="question5" type="radio" value="Starting to compete" data-value = "3">Starting to compete <span class = "radio-btn"></span></label>
+              <label class = "mb-15"><input class="" id="form-input-question5-2" name="question5" type="radio" value="Behind the curve" data-value = "2">Behind the curve <span class = "radio-btn"></span></label>
+              <label class = "mb-15"><input class="" id="form-input-question5-3" name="question5" type="radio" value="Not competitive at all" data-value = "1">Not competitive at all <span class = "radio-btn"></span></label>
+              </div>
+              <div class="bottom-bit">
+                <hr class="white ">
+                <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+              </div>
+            </div>
+
+
+
+            <div class="question-holder" data-question="6">
+            <label class = "h5 white text-uppercase mb-15 block" for="form-input-question6">Question 6</label>
+            	<h2 class="white mb-20">
+            		What are your strengths in digital banking today?
+            	</h2>
+                <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                <div class="radio-group">
+                    <label class = "mb-15"><input class="" id="form-input-question6-0" name="question6" type="radio" value="Have integrated digital everywhere we can right now" data-value = "4">Have integrated digital everywhere we can right now<span class = "radio-btn"></span></label>
+                  <label class = "mb-15"><input class="" id="form-input-question6-1" name="question6" type="radio" value="Building up our offerings and improving the experience at the same time" data-value = "3">Building up our offerings and improving the experience at the same time<span class = "radio-btn"></span></label>
+                  <label class = "mb-15"><input class="" id="form-input-question6-2" name="question6" type="radio" value="Have the basics in place – no real strengths" data-value = "2">Have the basics in place – no real strengths<span class = "radio-btn"></span></label>
+                  <label class = "mb-15"><input class="" id="form-input-question6-3" name="question6" type="radio" value="None" data-value = "1">None<span class = "radio-btn"></span></label>
+                </div>
+              <div class="bottom-bit">
+                <hr class="white ">
+                <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+              </div>
+            </div>
+
+
+
+
+
+
+            <div class="question-holder" data-question="7">
+              <label class = "h5 white text-uppercase mb-15 block" for="form-input-question7">Question 7</label>
+            		<h2 class="white mb-20">
+            		What are your weaknesses in digital banking today?
+            	</h2>
+                <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                <div class="radio-group">
+              <label class = "mb-15"><input class="" id="form-input-question7-0" name="question7" type="radio" value="Can always do better but happy where we are" data-value = "4">Can always do better but happy where we are<span class = "radio-btn"></span></label>
+                <label class = "mb-15"><input class="" id="form-input-question7-1" name="question7" type="radio" value="Not enough functionality and inconsistent" data-value = "3">Not enough functionality and inconsistent<span class = "radio-btn"></span></label>
+                  <label class = "mb-15"><input class="" id="form-input-question7-2" name="question7" type="radio" value="Poor quality solutions and limited functionality" data-value = "2">Poor quality solutions and limited functionality<span class = "radio-btn"></span></label>
+                    <label class = "mb-15"><input class="" id="form-input-question7-3" name="question7" type="radio" value="Everything" data-value = "1">Everything<span class = "radio-btn"></span></label>
+                    </div>
+                    <div class="bottom-bit">
+                      <hr class="white ">
+                      <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+                    </div>
+            </div>
+
+            <div class="question-holder" data-question="8">
+              <label class = "h5 white text-uppercase mb-15 block" for="form-input-question8">Question 8</label>
+            		<h2 class="white mb-20">
+            		What is your next priority in terms of your digital banking evolution?
+            	</h2>
+                <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                <div class="radio-group">
+            <label class = "mb-15"><input class="" id="form-input-question8-0" name="question8" type="radio" value="Continuing to evolve existing solutions" data-value = "4">Continuing to evolve existing solutions<span class = "radio-btn"></span></label>
+            <label class = "mb-15"><input class="" id="form-input-question8-1" name="question8" type="radio" value="Adding new functionality to existing applications" data-value = "3">Adding new functionality to existing applications<span class = "radio-btn"></span></label>
+            <label class = "mb-15"><input class="" id="form-input-question8-2" name="question8" type="radio" value="Planning to create or improve existing applications" data-value = "2">Planning to create or improve existing applications<span class = "radio-btn"></span></label>
+            <label class = "mb-15"><input class="" id="form-input-question8-3" name="question8" type="radio" value="Considering an investment or determining how to get started" data-value = "1">Considering an investment or determining how to get started<span class = "radio-btn"></span></label>
+                </div>
+                <div class="bottom-bit">
+                  <hr class="white ">
+                  <a href="#" class="btn inline-block next-btn mt-25">Next</a>
+                </div>
+            </div>
+            <div class="question-holder " data-question="9">
+              <label class = "h5 white text-uppercase mb-15 block" for="form-input-question9">Question 9</label>
+            	<h2 class="white mb-20">
+            		Do you plan to have technology or service RPF in the next 12 months?
+            	</h2>
+                <h6 class = "text-uppercase mb-15">Select the option that best represents you</h6>
+                <div class="radio-group ">
+                <label class = "mb-15"><input class="" id="form-input-question9-0" name="question9" type="radio" value="Yes" data-value = "4">Yes<span class = "radio-btn"></span></label>
+                <label class = "mb-15"><input class="" id="form-input-question9-1" name="question9" type="radio" value="No" data-value = "1">No<span class = "radio-btn"></span></label>
+                  </div>
+
+
+                  <div class="bottom-bit">
+                    <hr class="white">
+                          <label class="hidden"  for="form-input-firstName">First Name</label>
+
+                          	<input class ="additional-info" id="form-input-firstName" name="firstName" type="text" placeholder="Name (Required)" required>
+                            <label class="hidden"  for="form-input-email" required>Email</label>
+                            <input class=" additional-info" id="form-input-email" name="email" type="email" placeholder="Email (Required)" required>
+                            <label class="hidden"  for="form-input-companyName">Company Name</label>
+                            <input class="additional-info" id="form-input-companyName" name="companyName" type="text"placeholder="Company (Required)"  required>
+                            <label class="hidden"  for="form-input-total">Total</label>
+                            <input class="additional-info" id="form-input-total" name="total" type="number"  value = "0">
+                            <button type = "submit" class = "submit btn">Submit</button>
+          </div>
+
+
+            </div>
+
+            {{ form.renderClosingTag }}
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock %}

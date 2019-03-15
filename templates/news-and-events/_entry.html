@@ -1,0 +1,93 @@
+{% extends "_layouts/products" %}
+{% block main %}
+{% cache %}
+
+
+{% if entry.type == "news" %}
+<div class="banner-slant-jumbotron " {% if entry.bannerImage | length  %}style = "background-image: url({{ entry.bannerImage.one.url }})"{% endif %}>
+<img src="/assets/icons/purple-slant.svg" role = "presentation" class = "purple-overlay">
+<img src="/assets/icons/divide-bar.svg" role = "presentation" class = "bottom-bar">
+
+  <div class="content-holder">
+  <div class="half-container-right half-container ml-auto relative">
+      <h1 class=" white {% if entry.title | length > 60 %}tall{% else %}h2{% endif %}">{{ entry.title }}</h1>
+    <hr class="white mr-100 mt-30 mb-20 mr-lg-auto ml-lg-auto">
+    </div>
+</div>
+
+</div>
+
+{% elseif entry.type == "events" %}
+<div class="  flex align-center justify-center gradient pt-120 pb-120 pt-md-80 pb-md-80 pt-sm-50 pb-sm-50 dark-purple-background relative">
+  <div class="cross-background"></div>
+
+  <div class="contact-modal-container text-center relative pr-30 pl-30 pt-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <h1 class="text-uppercase white mb-10">{{ entry.title }}</h1>
+          <p class="white mb-70 mb-sm-40">{{ entry.eventStart | date }} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; {{ entry.eventLocation }}</p>
+        <a href="{{ entry.linkUrl }}" class="btn lavendar mr-10 ml-10  mr-sm-auto mb-sm-20 mr-sm-10 ml-sm-10 ">Learn More</a>
+        </div>
+      </div>
+
+  </div>
+  </div>
+</div>
+{% endif %}
+
+
+
+
+<div class="container relative pt-100 pb-100 blog-post pt-lg-60  pt-md-40 pb-md-40 mt-sm-30">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="sticky-share text-center">
+        <h6 class="purple text-uppercase">Share</h6>
+        <a href="#" onclick="window.open('https://twitter.com/home?status={{   entry.title|url_encode }}{{   entry.getUrl() }}','share','resizable,height=360,width=470'); return false;" target="_blank">
+          <img src="/assets/icons/purple-twitter.svg" alt="Puprle Twitter">
+        </a>
+        <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{   entry.getUrl() }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+          <img src="/assets/icons/purple-facebook.svg" alt="Facebook">
+        </a>
+        <a href="#" onclick="window.open('https://plus.google.com/share?url={{ entry.getUrl() }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+          <img src="/assets/icons/purple-googleplus.svg" alt="Google Plus">
+        </a>
+        <a href="#" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url={{   entry.getUrl() }}&title={{   entry.title }}','share','resizable,height=360,width=470'); return false;" rel="nofollow" target="_blank">
+          <img src="/assets/icons/purple-linkedin.svg" alt="Linked In">
+        </a>
+
+      </div>
+    {% for block in entry.mainContent.all %}
+      {% if block.type == "wysiwyg" %}
+        {{ block.wysiwyg }}
+      {% endif %}
+    {% endfor %}
+
+</div>
+</div>
+</div>
+
+
+
+{% include "_partials/featured-product.html" %}
+
+
+<div class="container pt-120 pb-120 pt-lg-60 pb-lg-60 pb-mb-40">
+  <div class="text-center">
+    <h2 class="purple mb-70 mb-sm-40">Expertise & Research</h2>
+  </div>
+
+  <div class="row">
+    {% if entry.relatedPosts | length %}
+      {% set posts = entry.relatedPosts.all %}
+    {% else %}
+      {% set posts =  craft.entries.section("newsAndEvents").limit(3) %}
+    {% endif %}
+    {% for post in posts.all  %}
+      {% include "_partials/blog-post" %}
+    {% endfor %}
+  </div>
+</div>
+{% endcache %}
+{% endblock %}

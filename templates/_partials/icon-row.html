@@ -1,0 +1,16 @@
+
+
+  <div class="row mb-70 mb-md-40 mb-sm-20">
+    <div class="col-sm-10 offset-sm-1 text-center">
+    <h2 class="purple">{{ block.header }}</h2>
+    </div>
+  </div>
+  <div class="row text-center mb-20">
+    {% for icon in block.icons.all %}
+    <div class="col-lg-4 col-md-6 col-12 pl-30 pr-30 pt-sm-25 pl-sm-20 pr-sm-20 mb-50 mb-md-20 waypoint-transition slide-up">
+      <img src="{{ icon.icon.one.url }}" alt="{{ icon.icon.one.title }}" class = "mb-10 circle-icon">
+      <p>{{ icon.description | striptags("<em><i><b>") | raw  }}</p>
+    </div>
+    {% endfor %}
+
+  </div>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="124px" height="124px" viewBox="0 0 124 124">
+  <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+  <title>icon 1</title>
+  <desc>Created with Sketch.</desc>
+  <defs></defs>
+  <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="digital_wallet" transform="translate(-260.000000, -972.000000)">
+      <g id="icon-1" transform="translate(262.000000, 974.000000)">
+        <circle id="Oval" stroke="#704C9F" stroke-width="3" fill="#FFFFFF" cx="60" cy="60" r="60"></circle>
+        <g id="Page-1" transform="translate(32.000000, 38.000000)" fill="#36246A">
+          <polygon id="Fill-1" points="0 44 6 44 6 0 0 0"></polygon>
+          <polygon id="Fill-2" points="17 44 25 44 25 0 17 0"></polygon>
+          <polygon id="Fill-3" points="42 44 45 44 45 0 42 0"></polygon>
+          <polygon id="Fill-4" points="11 44 14 44 14 0 11 0"></polygon>
+          <polygon id="Fill-5" points="50 44 56 44 56 0 50 0"></polygon>
+          <polygon id="Fill-6" points="30 44 36 44 36 0 30 0"></polygon>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

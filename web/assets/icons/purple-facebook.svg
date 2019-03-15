@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="25px" viewBox="0 0 13 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>purple-facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="news_post" transform="translate(-165.000000, -932.000000)" fill="#704C9F">
+            <g id="share" transform="translate(86.000000, 841.000000)">
+                <g id="social-sidebar" transform="translate(73.000000, 40.000000)">
+                    <path d="M6,59.204568 L8.67568798,59.204568 L8.67568798,56.7118379 C8.67568798,55.6135197 8.70460611,53.9171797 9.53866584,52.8684536 C10.4153418,51.7570081 11.6207712,51 13.6922224,51 C17.0680335,51 18.4911099,51.462373 18.4911099,51.462373 L17.8214269,55.2619996 C17.8214269,55.2619996 16.7057959,54.9527785 15.6662653,54.9527785 C14.6252126,54.9527785 13.6922224,55.310133 13.6922224,56.3078085 L13.6922224,59.204568 L17.9599295,59.204568 L17.6631382,62.9152206 L13.6922224,62.9152206 L13.6922224,75.809155 L8.67568798,75.809155 L8.67568798,62.9152206 L6,62.9152206 L6,59.204568 Z" id="purple-facebook"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<div class="purple-gradient-background bottom-bar-background pt-120 pb-160 pt-md-60 pb-md-80 pb-sm-50">
+  <div class="small-container">
+  <div class="row align-center justify-center text-center">
+  <div class="col-lg-12">
+    <h2 class="white mb-60 mb-sm-20">{{ block.header}}</h2>
+    <div class="row">
+      {% for stat in block.statistics.all %}
+      <div class="col-md-4 pr-40 pl-40 pl-md-15 pr-md-15  mb-sm-30 waypoint-transition slide-up">
+        <span class="inline-block number h1 nowrap">
+          {{ stat.stat }}
+        </span>
+        <p class="white">{{ stat.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  </div>
+</div>

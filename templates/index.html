@@ -1,0 +1,83 @@
+{% extends "_layouts/main" %}
+
+{% block main %}
+{% cache %}
+
+  {% for block in entry.homepage.all()  %}
+    {% if block.type == "banner" %}
+    <div class="purple-background pb-xl-40 banner relative">
+      <div class="cross-but-more-left"></div>
+        <div class="container pt-60 pb-30 pt-sm-30">
+          <div class="row align-center">
+            <div class="col-xl-6 banner-sample mb-xl-50 mb-sm-30 text-center-xl">
+              <div class="home-video-sample relative inline-block">
+                <img src="{{ block.featuredImages.one.url }}" alt="{{ block.featuredImages.one.title }}"  class = "pr-xl-50 pr-md-0 img-responsive-lg">
+                {% if block.featuredVideos | length %}
+                  {% for video in block.featuredVideos.all %}
+                    <div class="homeVideo-{{loop.index}}-holder">
+                    <video src="{{ video.url }}" muted autoplay loop  {% if video.poster | length %} poster = "{{ video.poster.one.url}}" {% endif %}></video>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  <video src="/assets/videos/retail-banking-phone-2.mp4" muted autoplay loop class = "mobile"></video>
+                {% endif %}
+              </div>
+              </div>
+            <div class="col-xl-6 center-xl col-lg-10 offset-lg-1 offset-xl-0  text-center-xl">
+              <h1 class = "mb-20 white">{{ block.header }}</h1>
+              <p class="white mb-20">{{ block.subheader| nl2br  | striptags("<em><i><b><br><b><strong>") | raw  }}</p>
+              <p class="white mb-40">{{ block.description| nl2br  | striptags("<em><i><b><br><b><strong>") | raw  }}</p>
+              <a href="{{ block.button1Link }}" data-link = "{{ block.button1Link }}" class="btn lavendar mr-10 mr-sm-auto mb-sm-20 mr-sm-10 ml-sm-10 video-btn" >{{ block.button1Text }}</a>
+              <a href="{{ block.button2Link }}" class="btn lavendar ml-10 mr-sm-auto mr-sm-10 mr-sm-10">{{ block.button2Text }}</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    {% elseif block.type == "featuredClients" %}
+      <div class="small-container text-center relative mt-100 mt-lg-70 mt-md-50 mb-60 mb-sm-20">
+        <h2 class="purple  purple  mb-40 mb-sm-10">Featured Clients</h2>
+        <p class="large">{{ block.header }}</p>
+      </div>
+      <div class="container  relative mb-100 mb-md-70  mb-sm-50" >
+        <div class="row align-center justify-center">
+           {% for client in block.clients.all() %}
+              <div class="client-logo align-center justify-center pr-30 pl-30 slide-up waypoint-transition col-6  col-sm">
+
+                {% if client.linkUrl | length %}
+                <a href="{{ client.linkUrl }}" target = "_blank">
+                <img src="{{ client.logo.one.url }}" alt="{{ client.logo.one.title }}" class = "responsive-img-xs">
+                </a>
+                {% else %}
+
+                <img src="{{ client.logo.one.url }}" alt="{{ client.logo.one.title }}" class = "responsive-img-xs">
+
+                {% endif %}
+
+              </div>
+           {% endfor %}
+      </div>
+      </div>
+    {% elseif block.type == "featuredBlogPost" %}
+      {% set post = block.post.one %}
+      {% include "_partials/related-article-purple"%}
+    {% elseif block.type == "testimonials" %}
+
+      {% include "_partials/testimonial.html" %}
+
+    {% elseif block.type == "additionalInsights" %}
+      <div class="container pt-120 pb-120 pt-lg-60 pb-lg-60 pb-mb-40">
+        <div class="text-center">
+          <h2 class="purple mb-70 mb-sm-40">Expertise & Research</h2>
+        </div>
+        <div class="row">
+          {% for post in block.insight.all() %}
+            {% include "_partials/blog-post" %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% endcache %}
+  {% endblock %}
