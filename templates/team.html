@@ -47,7 +47,37 @@
     <div class="row justify-center pl-lg-90 pr-lg-90 pl-sm-15 pr-sm-15">
       {% for member in team.teamMember %}
       <div class="col-lg-3 col-md-6 col-sm-6 mb-lg-30">
-        {% for head in member.headshot %}<img src="{{ head.url }}" alt="{{ head.title }}">{% endfor %}
+        <div class="relative">
+        {% for head in member.headshot %}<img src="{{ head.url }}" alt="{{ head.title }}" style = "width: 150px; height: 150px; border-radius: 50%;">{% endfor %}
+        {% if member.linkedin | length %}
+        <a href="{{ member.linkedin }}" target = "_blank" class = "absolute" style = "bottom: 0; right: 34px;">
+        <svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <polygon id="path-1" points="0 0.984 34.016 0.984 34.016 34.9998 0 34.9998"></polygon>
+            </defs>
+            <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="team" transform="translate(-1007.000000, -2000.000000)">
+                    <g id="row-1-copy" transform="translate(384.000000, 1881.000000)">
+                        <g id="linked-in" transform="translate(623.000000, 118.000000)">
+                            <g id="Group-3" transform="translate(0.000000, 0.015700)">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <g id="Clip-2"></g>
+                                <path d="M17.008,34.9998 C26.403,34.9998 34.016,27.3848 34.016,17.9918 C34.016,8.5988 26.403,0.9838 17.008,0.9838 C7.614,0.9838 0,8.5988 0,17.9918 C0,27.3848 7.614,34.9998 17.008,34.9998" id="Fill-1" fill="#CCCCCC" mask="url(#mask-2)"></path>
+                            </g>
+                            <path d="M25.5119,25.121 L21.7529,25.121 L21.7529,19.631 C21.7529,18.194 21.1649,17.213 19.8719,17.213 C18.8829,17.213 18.3329,17.875 18.0769,18.513 C17.9809,18.742 17.9959,19.06 17.9959,19.38 L17.9959,25.121 L14.2719,25.121 C14.2719,25.121 14.3199,15.396 14.2719,14.512 L17.9959,14.512 L17.9959,16.177 C18.2159,15.449 19.4059,14.41 21.3049,14.41 C23.6609,14.41 25.5119,15.936 25.5119,19.222 L25.5119,25.121 Z M10.5059,13.184 L10.4819,13.184 C9.2819,13.184 8.5039,12.373 8.5039,11.346 C8.5039,10.298 9.3049,9.504 10.5289,9.504 C11.7519,9.504 12.5039,10.296 12.5279,11.343 C12.5279,12.371 11.7519,13.184 10.5059,13.184 Z M8.9329,25.121 L12.2479,25.121 L12.2479,14.512 L8.9329,14.512 L8.9329,25.121 Z" id="Fill-4" fill="#FFFFFF"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        </a>
+        {% endif %}
+        </div>
+
+
+
         <h4 class="purple">{{ member.title }}</h4>
         <h5 class="grey">{{ member.jobTitle }}</h5>
       </div>
@@ -107,34 +137,16 @@
 
 
 
-<div class=" pt-120 pb-120 pt-lg-60 pb-lg-60">
-  <div class="small-container">
-
-
-    <div class="row align-center justify-center">
-      <div class="col-lg-6 pr-0 pr-sm-15 pl-lg-25 pr-lg-25 mb-lg-30">
-        <a href="https://dbx.kony.com/openbanking" target="_blank">
-            <div class="img-blog-holder waypoint-transition">
-              <img src="/uploads/blog/open-banking.jpg" alt="Open Banking" class="img-responsive-lg mr-lg-auto ml-lg-auto">
-            </div>
-        </a>
-      </div>
-      <div class="col-lg-6 pl-50 pl-lg-25 pr-lg-25">
-        <h3 class="purple mb-5"><a href="https://dbx.kony.com/openbanking" target="_blank" class="purple">Open Banking</a></h3>
-        <h6 class="text-uppercase mb-15 lavendar"> &nbsp;&nbsp;|&nbsp;&nbsp; Jan 17th 2018</h6>
-        <p class=" mb-20">Open banking is the concept of leveraging open APIs to enhance existing digital offerings as well as bringing new digital offerings to market. For this to happen banks will need to open their data and develop, manage, and maintain secure APIs that third party providers may consume.</p>
-        <a href="https://dbx.kony.com/openbanking" class="purple-link purple" target="_blank">Read More</a>
-      </div>
-    </div>
-
-
-</div>
-</div>
 
 
   {% set post = entry.featuredPost.one %}
 
+  <div class=" pt-120 pb-120 pt-lg-60 pb-lg-60">
+    <div class="small-container">
 
 
+{% include "_partials/related-article-white"%}
+</div>
+</div>
 
 {% endblock %}

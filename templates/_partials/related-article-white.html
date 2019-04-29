@@ -1,3 +1,5 @@
+{% if post | length  %}
+
     {% if post.section == "Trends and Insights" %}
 <div class=" pt-120 pb-120 pt-lg-60 pb-lg-60">
   <div class="small-container">
@@ -14,6 +16,8 @@
             <div class="img-blog-holder waypoint-transition slide-right">
               <img src="{{ post.thumbnail.one.url }}" alt="{{ post.thumbnail.one.title }}" class = "img-responsive-lg mr-lg-auto ml-lg-auto">
             </div>
+
+
         </a>
       </div>
       <div class="col-lg-6 pl-50 pl-lg-25 pr-lg-25">
@@ -49,3 +53,4 @@
 
 </div>
 </div>
+{% endif %}

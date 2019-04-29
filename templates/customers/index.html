@@ -33,7 +33,13 @@
 
         {% for logo in row.logo %}
         <div class="col-fifth col-fifth-icon col text-center mt-50 mb-50 mt-xl-30 mb-xl-30 mt-sm-30 mb-sm-30">
+          {% if logo.linkUrl %}
+          <a href="{{ logo.linkUrl }}" target = "_blank">
+            <img src="{{ logo.url }}" alt="{{ logo.title }}">
+          </a>
+          {% else %}
           <img src="{{ logo.url }}" alt="{{ logo.title }}">
+          {% endif %}
         </div>
         {% endfor %}
 

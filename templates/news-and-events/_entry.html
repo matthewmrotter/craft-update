@@ -82,7 +82,7 @@
     {% if entry.relatedPosts | length %}
       {% set posts = entry.relatedPosts.all %}
     {% else %}
-      {% set posts =  craft.entries.section("newsAndEvents").limit(3) %}
+      {% set posts =  craft.entries.section("newsAndEvents").orderBy("postdate desc").limit(3) %}
     {% endif %}
     {% for post in posts.all  %}
       {% include "_partials/blog-post" %}

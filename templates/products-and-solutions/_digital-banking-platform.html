@@ -45,6 +45,11 @@
 
       {% include "_partials/benefits"%}
 
+      {% elseif block.type == "featuredBlogPost" %}
+        {% set post = block.post.one %}
+        {% include "_partials/related-article-purple"%}
+
+
 
     {% elseif block.type == "appSuite" %}
 
